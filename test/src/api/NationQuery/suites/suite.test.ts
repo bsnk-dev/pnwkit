@@ -7,7 +7,7 @@ export default function suite() {
       const nations = await pnwkit.nationQuery(
         `
           nation_name
-        `, 1, [100541]);
+        `, {first: 1, id: [100541]});
 
       assert.strictEqual(nations[0].nation_name, 'Blusania');
     });
