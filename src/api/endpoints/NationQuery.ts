@@ -1,4 +1,4 @@
-import { Nation, QueryNationsArgs } from "../../interfaces/PoliticsAndWarGraphQL";
+import { Nation, NationPaginator, QueryNationsArgs } from "../../interfaces/PoliticsAndWarGraphQL";
 import GraphQL from "../../services/GraphQL";
 
 enum AlliancePosition {
@@ -27,26 +27,47 @@ interface Parameters {
 }
 
 /**
- * Get nation information in the query with the following paramters
- * @param {string} query The graphql query to get info with 
+ * Gets nation results from a query
  * @param {Parameters} params Query parameters to customize your results
- * @returns {Nation[]} The nations queried
+ * @param {string} query The graphql query to get info with 
+ * @param {boolean?} paginator Deliver the data in a paginated format
+ * @returns {Promise<Nation[] | NationPaginator>} The nations queried or as paginated
  */
+export default async function nationQuery(params: Parameters, query: string, paginator?: false): Promise<Nation[]>;
+export default async function nationQuery(params: Parameters, query: string, paginator: true): Promise<NationPaginator>;
 export default async function nationQuery(
-  query: string,
   params: Parameters,
-) {
+  query: string,
+  paginator?: boolean,
+): Promise<NationPaginator | Nation[]> {
   const argsToParamters = GraphQL.generateParamters(params as QueryNationsArgs);
 
   const res = await GraphQL.makeCall(`
     {
-      nations(${argsToParamters}) {
+      nations${argsToParamters} {
+        ${
+          (paginator) ?
+          `
+          paginatorInfo {
+            count,
+            currentPage,
+            firstItem,
+            hasMorePages,
+            lastItem,
+            lastPage,
+            perPage,
+            total
+          },
+          `:''
+        }
         data {
           ${query}
         }
       }
     }
   `);
+
+  if (paginator) return res.nations as NationPaginator; 
 
   return res.nations.data as Nation[];
 }

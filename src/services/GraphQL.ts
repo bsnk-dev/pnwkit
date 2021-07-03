@@ -54,8 +54,10 @@ class GraphQLService {
       }
     }
 
+    if (parameters.length == 0) return '';
+
     const joinedParamters = parameters.join(',');
-    return joinedParamters;
+    return `(${joinedParamters})`;
   }
 
   /**

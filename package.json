@@ -5,7 +5,8 @@
   "main": "./build/src/index.js",
   "scripts": {
     "build": "tsc",
-    "test": "mocha ./build/test --recursive --timeout 10000"
+    "clean:build": "shx rm -rf ./build",
+    "test": "npm run clean:build && npm run build && mocha ./build/test --recursive --timeout 10000"
   },
   "author": "bsnk-dev",
   "license": "MIT",
@@ -18,6 +19,7 @@
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-tsdoc": "^0.2.14",
     "mocha": "^9.0.1",
+    "shx": "^0.3.3",
     "typescript": "^4.3.5"
   },
   "dependencies": {
