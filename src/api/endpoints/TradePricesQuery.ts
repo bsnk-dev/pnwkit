@@ -1,12 +1,12 @@
 import { QueryTradepricesArgs, Tradeprice } from "../../interfaces/PoliticsAndWarGraphQL";
 import GraphQL from "../../services/GraphQL";
 
-interface Parameters {
+export interface Parameters {
   limit?: number;
 }
 
 /**
- * Gets trade prices
+ * Gets a list of trade prices
  * @param {Parameters} params Query parameters to customize your results
  * @param {string} query The graphql query to get info with 
  * @returns {Promise<Tradeprice[]>}

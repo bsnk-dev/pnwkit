@@ -1,14 +1,14 @@
 import { Alliance, AlliancePaginator, QueryAlliancesArgs } from "../../interfaces/PoliticsAndWarGraphQL";
 import GraphQL from "../../services/GraphQL";
 
-interface Parameters {
+export interface Parameters {
   first: number;
   id?: number[];
   page?: number;
 }
 
 /**
- * Gets alliance results from a query
+ * Gets a list of alliances
  * @param {Parameters} params Query parameters to customize your results
  * @param {string} query The graphql query to get info with 
  * @param {boolean?} paginator Deliver the data in a paginated format

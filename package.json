@@ -6,6 +6,7 @@
   "scripts": {
     "build": "tsc",
     "clean:build": "shx rm -rf ./build",
+    "docs": "typedoc src/index.ts src/api src/interfaces/PoliticsAndWarGraphQL.ts",
     "test": "npm run clean:build && npm run build && mocha ./build/test --recursive --timeout 10000"
   },
   "author": "bsnk-dev",
@@ -20,6 +21,7 @@
     "eslint-plugin-tsdoc": "^0.2.14",
     "mocha": "^9.0.1",
     "shx": "^0.3.3",
+    "typedoc": "^0.21.2",
     "typescript": "^4.3.5"
   },
   "dependencies": {

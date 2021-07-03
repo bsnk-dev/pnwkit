@@ -1,7 +1,7 @@
 import { QueryTradesArgs, Trade } from "../../interfaces/PoliticsAndWarGraphQL";
 import GraphQL from "../../services/GraphQL";
 
-interface Parameters {
+export interface Parameters {
   limit?: number;
   nation_id?: string[];
   offer_resource?: string;
@@ -10,7 +10,7 @@ interface Parameters {
 }
 
 /**
- * Gets trades
+ * Gets a list of trades
  * @param {Parameters} params Query parameters to customize your results
  * @param {string} query The graphql query to get info with 
  * @returns {Promise<Trade[]>}

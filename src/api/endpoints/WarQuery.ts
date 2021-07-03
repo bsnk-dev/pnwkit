@@ -1,7 +1,7 @@
 import { QueryWarsArgs, War } from "../../interfaces/PoliticsAndWarGraphQL";
 import GraphQL from "../../services/GraphQL";
 
-interface Parameters {
+export interface Parameters {
   id?: number[];
   days_ago?: number;
   active?: boolean;
@@ -10,7 +10,7 @@ interface Parameters {
 }
 
 /**
- * Gets wars
+ * Gets a list of wars
  * @param {Parameters} params Query parameters to customize your results
  * @param {string} query The graphql query to get info with 
  * @returns {Promise<War[]>}

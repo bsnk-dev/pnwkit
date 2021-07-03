@@ -1,16 +1,16 @@
 import { Nation, NationPaginator, QueryNationsArgs } from "../../interfaces/PoliticsAndWarGraphQL";
 import GraphQL from "../../services/GraphQL";
 
-enum AlliancePosition {
+export enum AlliancePosition {
   Noalliance = 0,
   Applicant = 1,
   Member = 2,
   Officer = 3,
   Heir = 4,
-  LEader = 5,
+  Leader = 5,
 }
 
-interface Parameters {
+export interface Parameters {
   first: number;
   id?: number[];
   alliance_id?: number[];
@@ -27,7 +27,7 @@ interface Parameters {
 }
 
 /**
- * Gets nation results from a query
+ * Gets a list of nations
  * @param {Parameters} params Query parameters to customize your results
  * @param {string} query The graphql query to get info with 
  * @param {boolean?} paginator Deliver the data in a paginated format
