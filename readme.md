@@ -1,5 +1,12 @@
 # PnWKit
 
+<p align="center">
+  <a href="https://github.com/bsnk-dev/pnwkit">
+    <img src="https://assets.bsnk.dev/pwkit_icon_small.png" alt="Logo" width="80" height="80">
+  </a>
+</p>
+
+
 PnWKit is here to make interacting with the V3 Politics and War API easy. All you have to do is import the library, add your key, and make a query.
 
 ## Getting Started
