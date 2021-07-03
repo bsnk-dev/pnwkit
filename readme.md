@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://github.com/bsnk-dev/pnwkit">
-    <img src="https://assets.bsnk.dev/pnwkit_icon.png" alt="Logo" width="80" height="80">
+    <img src="https://assets.bsnk.dev/pnwkit_icon.png" alt="Logo" width="120" height="120">
   </a>
 </p>
 
