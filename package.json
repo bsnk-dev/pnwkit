@@ -1,9 +1,15 @@
 {
   "name": "pnwkit",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An API V3 SDK for PnW with Graphql Typings",
   "main": "./build/src/index.js",
-  "keywords": ["politics and war", "pnwkit", "pnw", "api", "bann"],
+  "keywords": [
+    "politics and war",
+    "pnwkit",
+    "pnw",
+    "api",
+    "bann"
+  ],
   "scripts": {
     "build": "tsc",
     "clean:build": "shx rm -rf ./build",
