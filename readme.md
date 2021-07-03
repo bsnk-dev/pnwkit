@@ -58,7 +58,7 @@ You can also do the following queries in PnWKit:
 - TreasureQuery
 - ColorQuery
 
-You can look at the arguments and possible data to collect here at the offical [P&W Docs](https://api.politicsandwar.com/graphql-playground).
+You can look at the arguments and possible data to collect here at the [docs](https://bsnk-dev.github.io/pnwkit/).
 
 
 # Development
