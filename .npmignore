@@ -1,1 +1,14 @@
 ./build/test
+
+docs
+
+test
+
+./src
+
+readme.md
+
+tsconfig.json
+.eslintrc.json
+
+*.tgz
