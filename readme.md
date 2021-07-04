@@ -16,7 +16,7 @@ will give you full advantage of the advanced typings within the library and allo
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
+Install the library using NPM.
 * npm
   ```sh
   npm i --save pnwkit
