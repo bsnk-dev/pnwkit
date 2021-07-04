@@ -1,7 +1,7 @@
 {
   "name": "pnwkit",
   "version": "1.0.2",
-  "description": "An API V3 SDK for PnW with Graphql Typings",
+  "description": "An API V3 SDK for PnW with GraphQL Typings",
   "main": "./build/src/index.js",
   "keywords": [
     "politics and war",
