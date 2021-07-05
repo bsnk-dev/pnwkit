@@ -1,3 +1,4 @@
+import { Kit } from "../..";
 import { QueryTradepricesArgs, Tradeprice } from "../../interfaces/PoliticsAndWarGraphQL";
 import GraphQL from "../../services/GraphQL";
 
@@ -12,6 +13,7 @@ export interface Parameters {
  * @returns {Promise<Tradeprice[]>}
  */
 export default async function tradePricesQuery(
+  this: Kit,
   params: Parameters,
   query: string,
 ): Promise<Tradeprice[]> {
@@ -23,7 +25,7 @@ export default async function tradePricesQuery(
         ${query}
       }
     }
-  `);
+  `, this.apiKey);
 
   return res.tradeprices as Tradeprice[];
 }

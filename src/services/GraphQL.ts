@@ -5,22 +5,22 @@ import {AnyQuery} from '../interfaces/PoliticsAndWarGraphQL';
  * An internal method of handling calls to the P&W graphQL API
  */
 class GraphQLService {
-  private apiKey = '';
   private politicsAndWarAPIRoot = 'https://api.politicsandwar.com/graphql';
 
   /**
    * Calls the Politics and War V3 API with a query
    * @param {string} query The GraphQL query to make
+   * @param {string} apiKey Your P&W API key
    *
    * @return {Promise<any>} Returns data to be type determined in a closer function
    * @throws {Error}
    */
-  public async makeCall(query: string) {
-    if (!this.apiKey) throw new Error('GraphQLService: Cannot make a call without an API key!');
+  public async makeCall(query: string, apiKey: string) {
+    if (!apiKey) throw new Error('GraphQLService: Cannot make a call without an API key!');
 
     const res = await superagent.get(this.politicsAndWarAPIRoot)
         .query({
-          api_key: this.apiKey,
+          api_key: apiKey,
           query,
         })
         .accept('json')
@@ -58,14 +58,6 @@ class GraphQLService {
 
     const joinedParameters = parameters.join(',');
     return `(${joinedParameters})`;
-  }
-
-  /**
-   * Sets the api key to make calls with
-   * @param {string} apiKey The new API key to use
-   */
-  public setKey(apiKey: string) {
-    this.apiKey = apiKey;
   }
 }
 

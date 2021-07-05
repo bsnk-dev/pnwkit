@@ -1,3 +1,4 @@
+import { Kit } from "../..";
 import { Nation, NationPaginator, QueryNationsArgs } from "../../interfaces/PoliticsAndWarGraphQL";
 import GraphQL from "../../services/GraphQL";
 
@@ -33,9 +34,10 @@ export interface Parameters {
  * @param {boolean?} paginator Deliver the data in a paginated format
  * @returns {Promise<Nation[] | NationPaginator>} The nations queried or as paginated
  */
-export default async function nationQuery(params: Parameters, query: string, paginator?: false): Promise<Nation[]>;
-export default async function nationQuery(params: Parameters, query: string, paginator: true): Promise<NationPaginator>;
+export default async function nationQuery(this: Kit, params: Parameters, query: string, paginator?: false): Promise<Nation[]>;
+export default async function nationQuery(this: Kit, params: Parameters, query: string, paginator: true): Promise<NationPaginator>;
 export default async function nationQuery(
+  this: Kit,
   params: Parameters,
   query: string,
   paginator?: boolean,
@@ -65,7 +67,7 @@ export default async function nationQuery(
         }
       }
     }
-  `);
+  `, this.apiKey);
 
   if (paginator) return res.nations as NationPaginator; 
 

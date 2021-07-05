@@ -1,23 +1,21 @@
-import GraphQL from "./services/GraphQL";
 import api from './api';
 
-const setKey = (key: string) => {
-  GraphQL.setKey(key);
-};
+export class Kit {
+  [key: string]: any;
 
-exports.setKey = setKey;
+  apiKey = '';
+
+  /**
+   * Set the pnwkit instance's key.
+   * @param key 
+   */
+  setKey(key: string) {
+    this.apiKey = key;
+  }
+}
 
 for (const [key, value] of Object.entries(api)) {
-  exports[key] = value;
+  Kit.prototype[key] = value;
 }
 
-export default {
- /**
- * Set the API key to use with PnWKit
- * @param {string} key P&W API key 
- */
-  setKey: (key: string) => {
-  GraphQL.setKey(key);
-  },
-  ...api,
-}
+export default new Kit();

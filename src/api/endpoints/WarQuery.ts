@@ -1,3 +1,4 @@
+import { Kit } from "../..";
 import { QueryWarsArgs, War } from "../../interfaces/PoliticsAndWarGraphQL";
 import GraphQL from "../../services/GraphQL";
 
@@ -16,6 +17,7 @@ export interface Parameters {
  * @returns {Promise<War[]>}
  */
 export default async function warQuery(
+  this: Kit,
   params: Parameters, 
   query: string,
 ): Promise<War[]> {
@@ -27,7 +29,7 @@ export default async function warQuery(
         ${query}
       }
     }
-  `);
+  `, this.apiKey);
 
   return res.wars as War[];
 }

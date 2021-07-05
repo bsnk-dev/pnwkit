@@ -1,3 +1,4 @@
+import { Kit } from "../..";
 import { Color } from "../../interfaces/PoliticsAndWarGraphQL";
 import GraphQL from "../../services/GraphQL";
 
@@ -7,6 +8,7 @@ import GraphQL from "../../services/GraphQL";
  * @returns {Promise<Treasure[]>}
  */
 export default async function colorQuery(
+  this: Kit,
   query: string,
 ): Promise<Color[]> {
   const res = await GraphQL.makeCall(`
@@ -15,7 +17,7 @@ export default async function colorQuery(
         ${query}
       }
     }
-  `);
+  `, this.apiKey);
 
   return res.colors as Color[];
 }

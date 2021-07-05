@@ -1,3 +1,4 @@
+import { Kit } from "../..";
 import { Treasure } from "../../interfaces/PoliticsAndWarGraphQL";
 import GraphQL from "../../services/GraphQL";
 
@@ -7,6 +8,7 @@ import GraphQL from "../../services/GraphQL";
  * @returns {Promise<Treasure[]>}
  */
 export default async function treasureQuery(
+  this: Kit,
   query: string,
 ): Promise<Treasure[]> {
   const res = await GraphQL.makeCall(`
@@ -15,7 +17,7 @@ export default async function treasureQuery(
         ${query}
       }
     }
-  `);
+  `, this.apiKey);
 
   return res.treasures as Treasure[];
 }
