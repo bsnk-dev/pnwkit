@@ -40,11 +40,11 @@ export default async function nationQuery(
   query: string,
   paginator?: boolean,
 ): Promise<NationPaginator | Nation[]> {
-  const argsToParamters = GraphQL.generateParamters(params as QueryNationsArgs);
+  const argsToParameters = GraphQL.generateParameters(params as QueryNationsArgs);
 
   const res = await GraphQL.makeCall(`
     {
-      nations${argsToParamters} {
+      nations${argsToParameters} {
         ${
           (paginator) ?
           `

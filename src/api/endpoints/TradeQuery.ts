@@ -19,11 +19,11 @@ export default async function tradeQuery(
   params: Parameters,
   query: string,
 ): Promise<Trade[]> {
-  const argsToParamters = GraphQL.generateParamters(params as QueryTradesArgs);
+  const argsToParameters = GraphQL.generateParameters(params as QueryTradesArgs);
 
   const res = await GraphQL.makeCall(`
     {
-      trades${argsToParamters} {
+      trades${argsToParameters} {
         ${query}
       }
     }

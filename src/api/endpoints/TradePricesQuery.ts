@@ -15,11 +15,11 @@ export default async function tradePricesQuery(
   params: Parameters,
   query: string,
 ): Promise<Tradeprice[]> {
-  const argsToParamters = GraphQL.generateParamters(params as QueryTradepricesArgs);
+  const argsToParameters = GraphQL.generateParameters(params as QueryTradepricesArgs);
 
   const res = await GraphQL.makeCall(`
     {
-      tradeprices${argsToParamters} {
+      tradeprices${argsToParameters} {
         ${query}
       }
     }

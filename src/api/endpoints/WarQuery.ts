@@ -19,11 +19,11 @@ export default async function warQuery(
   params: Parameters, 
   query: string,
 ): Promise<War[]> {
-  const argsToParamters = GraphQL.generateParamters(params as QueryWarsArgs);
+  const argsToParameters = GraphQL.generateParameters(params as QueryWarsArgs);
 
   const res = await GraphQL.makeCall(`
     {
-      wars${argsToParamters} {
+      wars${argsToParameters} {
         ${query}
       }
     }

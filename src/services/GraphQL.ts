@@ -35,14 +35,14 @@ class GraphQLService {
   }
 
   /**
-   * Takes a query and outputs query paramters
-   * @param {AnyQuery} queryParamters Any one of the five queries that take paramters
+   * Takes a query and outputs query Parameters
+   * @param {AnyQuery} queryParameters Any one of the five queries that take Parameters
    * @return {string}
    */
-  public generateParamters(queryParamters: AnyQuery) {
+  public generateParameters(queryParameters: AnyQuery) {
     const parameters: string[] = [];
 
-    for (const [paramter, value] of Object.entries(queryParamters)) {
+    for (const [paramter, value] of Object.entries(queryParameters)) {
       if (!value) continue;
 
       if (typeof value == 'string') {
@@ -56,8 +56,8 @@ class GraphQLService {
 
     if (parameters.length == 0) return '';
 
-    const joinedParamters = parameters.join(',');
-    return `(${joinedParamters})`;
+    const joinedParameters = parameters.join(',');
+    return `(${joinedParameters})`;
   }
 
   /**

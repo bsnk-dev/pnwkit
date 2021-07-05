@@ -21,11 +21,11 @@ export default async function allianceQuery(
   query: string,
   paginator?: boolean,
 ): Promise<AlliancePaginator | Alliance[]> {
-  const argsToParamters = GraphQL.generateParamters(params as QueryAlliancesArgs);
+  const argsToParameters = GraphQL.generateParameters(params as QueryAlliancesArgs);
 
   const res = await GraphQL.makeCall(`
     {
-      alliances${argsToParamters} {
+      alliances${argsToParameters} {
         ${
           (paginator) ?
           `
