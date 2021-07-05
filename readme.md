@@ -28,7 +28,7 @@ To use PnWKit just import the library and add your key, then you can make asyncr
 
 ```ts
 import pnwkit from 'pnwkit';
-pnwkit.addKey('xxxxx');
+pnwkit.setKey('xxxxx');
 
 const nations = await pnwkit.nationQuery({id: [100541], first: 1}, `name`);
 
