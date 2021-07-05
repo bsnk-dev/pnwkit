@@ -55,6 +55,19 @@ const nations = await pnwkit.nationQuery({id: [100541], first: 1},
 
 console.log(`First city of ${nations[0].name}: ${nations[0].cities[0].name});
 ```
+
+If you want to have multiple copies of PnWKit running at the same time, you can use the Kit class export.
+
+```ts
+import {Kit} from 'pnwkit';
+
+const pnwkit = new Kit();
+pnwkit.setKey('xxxx');
+
+// queries...
+```
+
+
 You can also do the following queries in PnWKit:
 
 - NationQuery
