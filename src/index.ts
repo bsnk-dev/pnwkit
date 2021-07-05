@@ -18,4 +18,11 @@ for (const [key, value] of Object.entries(api)) {
   Kit.prototype[key] = value;
 }
 
-export default new Kit();
+const kit = new Kit();
+
+for (const [key] of Object.entries(api)) {
+  exports[key] = kit[key];
+}
+exports.setKey = kit.setKey;
+
+export default kit;
