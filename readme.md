@@ -67,6 +67,17 @@ pnwkit.setKey('xxxx');
 // queries...
 ```
 
+### Use with require()
+
+PnWKit also supports require() like in vanilla js.
+
+```js
+const pnwkit = require('pnwkit');
+
+pnwkit.setKey('xxxx');
+// etc..
+```
+
 
 You can also do the following queries in PnWKit:
 
