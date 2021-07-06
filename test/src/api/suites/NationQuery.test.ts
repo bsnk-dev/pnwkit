@@ -2,10 +2,10 @@ import assert from 'assert';
 import pnwkit from '../../../../src';
 
 export default function suite() {
-  describe("#nationQuery()", function(this: any) {
+  describe('#nationQuery()', function(this: any) {
     it('should return a specific nation', async function() {
       const nations = await pnwkit.nationQuery(
-        {first: 1, id: [100541]}, `
+          {first: 1, id: [100541]}, `
         nation_name
       `);
 
@@ -14,7 +14,7 @@ export default function suite() {
 
     it('should return page information', async function() {
       const nations = await pnwkit.nationQuery(
-        {first: 1, id: [100541]}, `
+          {first: 1, id: [100541]}, `
         nation_name
       `, true);
 

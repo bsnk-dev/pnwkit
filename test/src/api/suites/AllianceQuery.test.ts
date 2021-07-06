@@ -2,10 +2,10 @@ import assert from 'assert';
 import pnwkit from '../../../../src';
 
 export default function suite() {
-  describe("#allianceQuery()", function(this: any) {
+  describe('#allianceQuery()', function(this: any) {
     it('should return an alliance', async function() {
       const alliances = await pnwkit.allianceQuery(
-        {first: 1}, `
+          {first: 1}, `
         name
       `);
 
@@ -14,7 +14,7 @@ export default function suite() {
 
     it('should return page information', async function() {
       const alliances = await pnwkit.allianceQuery(
-        {first: 1}, `
+          {first: 1}, `
         name
       `, true);
 
