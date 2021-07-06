@@ -43,7 +43,7 @@ class GraphQLService {
     const parameters: string[] = [];
 
     for (const [paramter, value] of Object.entries(queryParameters)) {
-      if (!value) continue;
+      if (value === undefined) continue;
 
       if (typeof value == 'string') {
         parameters.push(`${paramter}: ${value}`);
