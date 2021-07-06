@@ -1,9 +1,9 @@
-import api from './api';
+import PnwKitAPI from './api';
 
 /**
  * The main application class
  */
-export class Kit {
+export class Kit extends PnwKitAPI {
   [key: string]: any;
 
   apiKey = '';
@@ -17,13 +17,9 @@ export class Kit {
   }
 }
 
-for (const [key, value] of Object.entries(api)) {
-  Kit.prototype[key] = value;
-}
-
 const kit = new Kit();
 
-for (const [key] of Object.entries(api)) {
+for (const [key] of Object.entries(PnwKitAPI)) {
   exports[key] = kit[key];
 }
 exports.setKey = kit.setKey;

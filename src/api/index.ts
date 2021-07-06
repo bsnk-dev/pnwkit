@@ -6,12 +6,12 @@ import tradeQuery from './endpoints/TradeQuery';
 import treasureQuery from './endpoints/TreasureQuery';
 import colorQuery from './endpoints/ColorQuery';
 
-export default {
-  nationQuery,
-  allianceQuery,
-  tradePricesQuery,
-  warQuery,
-  tradeQuery,
-  treasureQuery,
-  colorQuery,
-};
+export default class PnwKitAPI {
+  nationQuery = nationQuery;
+  allianceQuery = allianceQuery;
+  tradePricesQuery = tradePricesQuery;
+  warQuery = warQuery;
+  tradeQuery = tradeQuery;
+  treasureQuery = treasureQuery;
+  colorQuery = colorQuery;
+}
