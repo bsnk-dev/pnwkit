@@ -1,6 +1,6 @@
-import { Kit } from "../..";
-import { Nation, NationPaginator, QueryNationsArgs } from "../../interfaces/PoliticsAndWarGraphQL";
-import GraphQL from "../../services/GraphQL";
+import {Kit} from '../..';
+import {Nation, NationPaginator, QueryNationsArgs} from '../../interfaces/PoliticsAndWarGraphQL';
+import GraphQL from '../../services/GraphQL';
 
 export enum AlliancePosition {
   Noalliance = 0,
@@ -30,17 +30,17 @@ export interface Parameters {
 /**
  * Gets a list of nations
  * @param {Parameters} params Query parameters to customize your results
- * @param {string} query The graphql query to get info with 
+ * @param {string} query The graphql query to get info with
  * @param {boolean?} paginator Deliver the data in a paginated format
  * @returns {Promise<Nation[] | NationPaginator>} The nations queried or as paginated
  */
 export default async function nationQuery(this: Kit, params: Parameters, query: string, paginator?: false): Promise<Nation[]>;
 export default async function nationQuery(this: Kit, params: Parameters, query: string, paginator: true): Promise<NationPaginator>;
 export default async function nationQuery(
-  this: Kit,
-  params: Parameters,
-  query: string,
-  paginator?: boolean,
+    this: Kit,
+    params: Parameters,
+    query: string,
+    paginator?: boolean,
 ): Promise<NationPaginator | Nation[]> {
   const argsToParameters = GraphQL.generateParameters(params as QueryNationsArgs);
 
@@ -61,7 +61,7 @@ export default async function nationQuery(
             total
           },
           `:''
-        }
+}
         data {
           ${query}
         }
@@ -69,7 +69,7 @@ export default async function nationQuery(
     }
   `, this.apiKey);
 
-  if (paginator) return res.nations as NationPaginator; 
+  if (paginator) return res.nations as NationPaginator;
 
   return res.nations.data as Nation[];
 }

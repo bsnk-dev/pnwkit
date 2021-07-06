@@ -1,6 +1,6 @@
-import { Kit } from "../..";
-import { QueryWarsArgs, War } from "../../interfaces/PoliticsAndWarGraphQL";
-import GraphQL from "../../services/GraphQL";
+import {Kit} from '../..';
+import {QueryWarsArgs, War} from '../../interfaces/PoliticsAndWarGraphQL';
+import GraphQL from '../../services/GraphQL';
 
 export interface Parameters {
   id?: number[];
@@ -13,13 +13,13 @@ export interface Parameters {
 /**
  * Gets a list of wars
  * @param {Parameters} params Query parameters to customize your results
- * @param {string} query The graphql query to get info with 
- * @returns {Promise<War[]>}
+ * @param {string} query The graphql query to get info with
+ * @return {Promise<War[]>}
  */
 export default async function warQuery(
-  this: Kit,
-  params: Parameters, 
-  query: string,
+    this: Kit,
+    params: Parameters,
+    query: string,
 ): Promise<War[]> {
   const argsToParameters = GraphQL.generateParameters(params as QueryWarsArgs);
 

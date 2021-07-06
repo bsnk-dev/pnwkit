@@ -18,6 +18,9 @@
     ],
     "rules": {
       "camelcase": "off",
-      "max-len": "off"
+      "max-len": "off",
+      "require-jsdoc": "off",
+      "valid-jsdoc": "off",
+      "no-invalid-this": "off"
     }
 }

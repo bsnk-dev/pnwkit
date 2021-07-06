@@ -1,6 +1,6 @@
-import { Kit } from "../..";
-import { Alliance, AlliancePaginator, QueryAlliancesArgs } from "../../interfaces/PoliticsAndWarGraphQL";
-import GraphQL from "../../services/GraphQL";
+import {Kit} from '../..';
+import {Alliance, AlliancePaginator, QueryAlliancesArgs} from '../../interfaces/PoliticsAndWarGraphQL';
+import GraphQL from '../../services/GraphQL';
 
 export interface Parameters {
   first: number;
@@ -11,17 +11,17 @@ export interface Parameters {
 /**
  * Gets a list of alliances
  * @param {Parameters} params Query parameters to customize your results
- * @param {string} query The graphql query to get info with 
+ * @param {string} query The graphql query to get info with
  * @param {boolean?} paginator Deliver the data in a paginated format
  * @returns {Promise<Alliance[] | AlliancePaginator>} The nations queried or as paginated
  */
 export default async function allianceQuery(this: Kit, params: Parameters, query: string, paginator?: false): Promise<Alliance[]>;
 export default async function allianceQuery(this: Kit, params: Parameters, query: string, paginator: true): Promise<AlliancePaginator>;
 export default async function allianceQuery(
-  this: Kit,
-  params: Parameters,
-  query: string,
-  paginator?: boolean,
+    this: Kit,
+    params: Parameters,
+    query: string,
+    paginator?: boolean,
 ): Promise<AlliancePaginator | Alliance[]> {
   const argsToParameters = GraphQL.generateParameters(params as QueryAlliancesArgs);
 
@@ -42,7 +42,7 @@ export default async function allianceQuery(
             total
           },
           `:''
-        }
+}
         data {
           ${query}
         }
@@ -50,7 +50,7 @@ export default async function allianceQuery(
     }
   `, this.apiKey);
 
-  if (paginator) return res.alliances as AlliancePaginator; 
+  if (paginator) return res.alliances as AlliancePaginator;
 
   return res.alliances.data as Alliance[];
 }

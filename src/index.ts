@@ -1,5 +1,8 @@
 import api from './api';
 
+/**
+ * The main application class
+ */
 export class Kit {
   [key: string]: any;
 
@@ -7,7 +10,7 @@ export class Kit {
 
   /**
    * Set the pnwkit instance's key.
-   * @param key 
+   * @param key
    */
   setKey(key: string) {
     this.apiKey = key;

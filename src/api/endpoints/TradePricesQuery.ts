@@ -1,6 +1,6 @@
-import { Kit } from "../..";
-import { QueryTradepricesArgs, Tradeprice } from "../../interfaces/PoliticsAndWarGraphQL";
-import GraphQL from "../../services/GraphQL";
+import {Kit} from '../..';
+import {QueryTradepricesArgs, Tradeprice} from '../../interfaces/PoliticsAndWarGraphQL';
+import GraphQL from '../../services/GraphQL';
 
 export interface Parameters {
   limit?: number;
@@ -9,13 +9,13 @@ export interface Parameters {
 /**
  * Gets a list of trade prices
  * @param {Parameters} params Query parameters to customize your results
- * @param {string} query The graphql query to get info with 
- * @returns {Promise<Tradeprice[]>}
+ * @param {string} query The graphql query to get info with
+ * @return {Promise<Tradeprice[]>}
  */
 export default async function tradePricesQuery(
-  this: Kit,
-  params: Parameters,
-  query: string,
+    this: Kit,
+    params: Parameters,
+    query: string,
 ): Promise<Tradeprice[]> {
   const argsToParameters = GraphQL.generateParameters(params as QueryTradepricesArgs);
 
