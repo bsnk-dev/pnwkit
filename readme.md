@@ -53,7 +53,7 @@ const nations = await pnwkit.nationQuery({id: [100541], first: 1},
     name  
   }`);
 
-console.log(`First city of ${nations[0].name}: ${nations[0].cities[0].name});
+console.log(`First city of ${nations[0].name}: ${nations[0].cities[0].name}`);
 ```
 
 If you want to have multiple copies of PnWKit running at the same time, you can use the Kit class export.
@@ -81,13 +81,13 @@ pnwkit.setKey('xxxx');
 
 You can also do the following queries in PnWKit:
 
-- NationQuery
-- AllianceQuery
-- TradePriceQuery
-- TradeQuery
-- WarQuery
-- TreasureQuery
-- ColorQuery
+- nationQuery
+- allianceQuery
+- tradePricesQuery
+- tradeQuery
+- warQuery
+- treasureQuery
+- colorQuery
 
 You can look at the arguments and possible data to collect here at the [docs](https://bsnk-dev.github.io/pnwkit/).
 
