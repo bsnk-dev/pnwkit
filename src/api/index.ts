@@ -15,3 +15,13 @@ export default class PnwKitAPI {
   treasureQuery = treasureQuery;
   colorQuery = colorQuery;
 }
+
+/* export type AnyQueryFunction =
+  typeof nationQuery |
+  typeof allianceQuery |
+  typeof tradePricesQuery |
+  typeof warQuery |
+  typeof tradeQuery |
+  typeof treasureQuery |
+  typeof colorQuery;
+*/

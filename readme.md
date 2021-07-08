@@ -91,6 +91,25 @@ pnwkit.setKey('xxxx');
 // etc..
 ```
 
+### Caching
+
+PnWKit has caching built right in for your convenience. 
+Just create a cache function with ``PnWKit.cached`` and define how long it can be cached for. Then call it like normal.
+
+Different calls return different cached versions too.
+
+```ts
+const cachableNationQuery = pnwkit.cached(
+  pnwkit.nationQuery, // The query you want to cache
+  1                   // How long that query can be cached at a time, in minutes
+);
+
+const nations = await cachableNationQuery({id: [100541], first: 1}, `name`);
+
+// If you call it again within the age limit you'll get a cached version
+const nationsCached = await cachableNationQuery({id: [100541], first: 1}, `name`);
+```
+
 
 You can also do the following queries in PnWKit:
 
