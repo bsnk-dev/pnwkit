@@ -13,7 +13,7 @@
     <br />
     <a href="https://pypi.org/project/pnwkit-py/">Python Version</a>
     ·
-    <a href="https://github.com/bsnk-dev/pnwkit/pnwkit/issues">Report Bug</a>
+    <a href="https://github.com/bsnk-dev/pnwkit/issues">Report Bug</a>
     ·
     <a href="https://github.com/bsnk-dev/pnwkit/issues">Request Feature</a>
   </p>
