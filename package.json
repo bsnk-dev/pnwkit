@@ -19,6 +19,7 @@
   "author": "bsnk-dev",
   "license": "MIT",
   "devDependencies": {
+    "@types/memoizee": "^0.4.6",
     "@types/mocha": "^8.2.2",
     "@types/superagent": "^4.1.12",
     "@typescript-eslint/eslint-plugin": "^4.28.1",
@@ -32,6 +33,7 @@
     "typescript": "^4.3.5"
   },
   "dependencies": {
+    "memoizee": "^0.4.15",
     "superagent": "^6.1.0"
   }
 }
