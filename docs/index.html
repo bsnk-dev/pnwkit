@@ -58,13 +58,23 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
-				<a href="#pnwkit" id="pnwkit" style="color: inherit; text-decoration: none;">
-					<h1>PnWKit</h1>
-				</a>
 				<p align="center">
 					<a href="https://github.com/bsnk-dev/pnwkit">
 						<img src="https://assets.bsnk.dev/pnwkit_icon.png" alt="Logo" width="120" height="120">
 					</a>
+					<h3 align="center">PnWKit</h3>
+					<p align="center">
+						Politics & War V3 API Library
+						<br />
+						<a href="https://bsnk-dev.github.io/pnwkit/"><strong>Explore the docs »</strong></a>
+						<br />
+						<br />
+						<a href="https://pypi.org/project/pnwkit-py/">Python Version</a>
+						·
+						<a href="https://github.com/bsnk-dev/pnwkit/issues">Report Bug</a>
+						·
+						<a href="https://github.com/bsnk-dev/pnwkit/issues">Request Feature</a>
+					</p>
 				</p>
 				<p>PnWKit is here to make interacting with the V3 Politics and War API easy. All you have to do is import the library, add your key, and make a query.</p>
 				<a href="#getting-started" id="getting-started" style="color: inherit; text-decoration: none;">
@@ -105,7 +115,7 @@
 <span style="color: #A31515">    name  </span>
 <span style="color: #A31515">  }`</span><span style="color: #000000">);</span>
 
-<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #A31515">`First city of </span><span style="color: #0000FF">${</span><span style="color: #001080">nations</span><span style="color: #000000FF">[</span><span style="color: #098658">0</span><span style="color: #000000FF">].</span><span style="color: #001080">name</span><span style="color: #0000FF">}</span><span style="color: #A31515">: </span><span style="color: #0000FF">${</span><span style="color: #001080">nations</span><span style="color: #000000FF">[</span><span style="color: #098658">0</span><span style="color: #000000FF">].</span><span style="color: #001080">cities</span><span style="color: #000000FF">[</span><span style="color: #098658">0</span><span style="color: #000000FF">].</span><span style="color: #001080">name</span><span style="color: #0000FF">}</span><span style="color: #A31515">);</span>
+<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #A31515">`First city of </span><span style="color: #0000FF">${</span><span style="color: #001080">nations</span><span style="color: #000000FF">[</span><span style="color: #098658">0</span><span style="color: #000000FF">].</span><span style="color: #001080">name</span><span style="color: #0000FF">}</span><span style="color: #A31515">: </span><span style="color: #0000FF">${</span><span style="color: #001080">nations</span><span style="color: #000000FF">[</span><span style="color: #098658">0</span><span style="color: #000000FF">].</span><span style="color: #001080">cities</span><span style="color: #000000FF">[</span><span style="color: #098658">0</span><span style="color: #000000FF">].</span><span style="color: #001080">name</span><span style="color: #0000FF">}</span><span style="color: #A31515">`</span><span style="color: #000000">);</span>
 </code></pre>
 				<p>If you want to have multiple copies of PnWKit running at the same time, you can use the Kit class export.</p>
 				<pre><code class="language-ts"><span style="color: #AF00DB">import</span><span style="color: #000000"> {</span><span style="color: #001080">Kit</span><span style="color: #000000">} </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;pnwkit&#039;</span><span style="color: #000000">;</span>
@@ -124,15 +134,30 @@
 <span style="color: #001080">pnwkit</span><span style="color: #000000">.</span><span style="color: #795E26">setKey</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;xxxx&#039;</span><span style="color: #000000">);</span>
 <span style="color: #008000">// etc..</span>
 </code></pre>
+				<a href="#caching" id="caching" style="color: inherit; text-decoration: none;">
+					<h3>Caching</h3>
+				</a>
+				<p>PnWKit has caching built right in for your convenience.
+				Just create a cache function with <code>PnWKit.cached</code> and define how long it can be cached for. Then call it like normal.</p>
+				<pre><code class="language-ts"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">cachableNationQuery</span><span style="color: #000000"> = </span><span style="color: #001080">pnwkit</span><span style="color: #000000">.</span><span style="color: #795E26">cached</span><span style="color: #000000">(</span>
+<span style="color: #000000">  </span><span style="color: #001080">pnwkit</span><span style="color: #000000">.</span><span style="color: #001080">nationQuery</span><span style="color: #000000">, </span><span style="color: #008000">// The query you want to cache</span>
+<span style="color: #000000">  </span><span style="color: #098658">1</span><span style="color: #000000">                   </span><span style="color: #008000">// How long that query can be cached at a time, in minutes</span>
+<span style="color: #000000">);</span>
+
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">nations</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #795E26">cachableNationQuery</span><span style="color: #000000">({</span><span style="color: #001080">id:</span><span style="color: #000000"> [</span><span style="color: #098658">100541</span><span style="color: #000000">], </span><span style="color: #001080">first:</span><span style="color: #000000"> </span><span style="color: #098658">1</span><span style="color: #000000">}, </span><span style="color: #A31515">`name`</span><span style="color: #000000">);</span>
+
+<span style="color: #008000">// If you call it again within the age limit you&#039;ll get a cached version</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">nationsCached</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #795E26">cachableNationQuery</span><span style="color: #000000">({</span><span style="color: #001080">id:</span><span style="color: #000000"> [</span><span style="color: #098658">100541</span><span style="color: #000000">], </span><span style="color: #001080">first:</span><span style="color: #000000"> </span><span style="color: #098658">1</span><span style="color: #000000">}, </span><span style="color: #A31515">`name`</span><span style="color: #000000">);</span>
+</code></pre>
 				<p>You can also do the following queries in PnWKit:</p>
 				<ul>
-					<li>NationQuery</li>
-					<li>AllianceQuery</li>
-					<li>TradePriceQuery</li>
-					<li>TradeQuery</li>
-					<li>WarQuery</li>
-					<li>TreasureQuery</li>
-					<li>ColorQuery</li>
+					<li>nationQuery</li>
+					<li>allianceQuery</li>
+					<li>tradePricesQuery</li>
+					<li>tradeQuery</li>
+					<li>warQuery</li>
+					<li>treasureQuery</li>
+					<li>colorQuery</li>
 				</ul>
 				<p>You can look at the arguments and possible data to collect here at the <a href="https://bsnk-dev.github.io/pnwkit/">docs</a>.</p>
 				<a href="#development" id="development" style="color: inherit; text-decoration: none;">

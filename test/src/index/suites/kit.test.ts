@@ -22,19 +22,15 @@ export default function suite() {
           0.5,
       );
 
-      await cachableNationCall(
+      const init = await cachableNationCall(
           {first: 1, id: [100541]}, 'nation_name');
 
-      await new Promise((resolve, reject) => {
-        setTimeout(async () => {
-          await cachableNationCall(
-              {first: 1, id: [100541]}, 'nation_name');
 
-          resolve(undefined);
-        }, 2500);
-      });
+      const cached = await cachableNationCall(
+          {first: 1, id: [100541]}, 'nation_name');
 
       assert.strictEqual(memProfile.statistics[Object.keys(memProfile.statistics)[0]].cached, 1);
+      assert.strictEqual(JSON.stringify(init), JSON.stringify(cached));
     });
   });
 }
