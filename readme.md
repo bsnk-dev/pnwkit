@@ -1,9 +1,22 @@
-# PnWKit
-
 <p align="center">
   <a href="https://github.com/bsnk-dev/pnwkit">
     <img src="https://assets.bsnk.dev/pnwkit_icon.png" alt="Logo" width="120" height="120">
   </a>
+
+  <h3 align="center">PnWKit</h3>
+
+  <p align="center">
+    Politics & War V3 API Library
+    <br />
+    <a href="https://bsnk-dev.github.io/pnwkit/"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://pypi.org/project/pnwkit-py/">Python Version</a>
+    ·
+    <a href="https://bsnk-dev.github.io/pnwkit/issues">Report Bug</a>
+    ·
+    <a href="https://bsnk-dev.github.io/pnwkit/issues">Request Feature</a>
+  </p>
 </p>
 
 
