@@ -1,3 +1,5 @@
+[![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/bsnk-dev/pnwkit)
+
 <p align="center">
   <a href="https://github.com/bsnk-dev/pnwkit">
     <img src="https://assets.bsnk.dev/pnwkit_icon.png" alt="Logo" width="120" height="120">
