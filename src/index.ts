@@ -37,4 +37,6 @@ for (const [key] of Object.entries(kit)) {
   exports[key] = kit[key];
 }
 
+exports.setKey = kit.setKey;
+
 export default kit;
