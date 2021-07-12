@@ -32,5 +32,12 @@ export default function suite() {
       assert.strictEqual(memProfile.statistics[Object.keys(memProfile.statistics)[0]].cached, 1);
       assert.strictEqual(JSON.stringify(init), JSON.stringify(cached));
     });
+
+    it('should export #nationQuery from a require call', function() {
+      // eslint-disable-next-line
+      const {nationQuery} = require('../../../../src');
+
+      assert.strictEqual(typeof nationQuery, 'function');
+    });
   });
 }
