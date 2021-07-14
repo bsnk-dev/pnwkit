@@ -33,12 +33,14 @@ export default function suite() {
       assert.strictEqual(JSON.stringify(init), JSON.stringify(cached));
     });
 
-    it('should export #nationQuery() and #setKey() from a require call', function() {
+    it('should export all the functions of Kit() from a require call', function() {
       // eslint-disable-next-line
-      const {nationQuery, setKey} = require('../../../../src');
+      const exported = require('../../../../src');
 
-      assert.strictEqual(typeof nationQuery, 'function');
-      assert.strictEqual(typeof setKey, 'function');
+      assert.strictEqual(exported.nationQuery, pnwkit.nationQuery);
+      assert.strictEqual(exported.cached, pnwkit.cached);
+      assert.strictEqual(exported.allianceQuery, pnwkit.allianceQuery);
+      assert.strictEqual(exported.setKey, pnwkit.setKey);
     });
   });
 }
