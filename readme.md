@@ -45,17 +45,18 @@ To use PnWKit just import the library and add your key, then you can make asyncr
 import pnwkit from 'pnwkit';
 pnwkit.setKey('xxxxx');
 
-const nations = await pnwkit.nationQuery({id: [100541], first: 1}, `name`);
+const nations = await pnwkit.nationQuery({id: [100541], first: 1}, `nation_name`);
 
-console.log(`Nation name: ${nations[0].name}`);
+console.log(`Nation name: ${nations[0].nation_name}`);
 ```
 
 If you want to paginate your query for more results, just enable pagination after your query.
 
 ```ts
-const nations = await pnwkit.nationQuery({id: [100541], first: 1}, `name`, true);
+const nations = await pnwkit.nationQuery({id: [100541], first: 1}, `nation_name`, true);
 
-console.log(`Nation name: ${nations.data[0].name}, current page: ${nations.paginatorInfo.currentPage}`);
+console.log(`Nation name: ${nations.data[0].nation_name
+name}, current page: ${nations.paginatorInfo.currentPage}`);
 ```
 
 The queries are written in normal GraphQL, so you can get all the cities in a nation like this
@@ -63,12 +64,12 @@ The queries are written in normal GraphQL, so you can get all the cities in a na
 ```ts
 const nations = await pnwkit.nationQuery({id: [100541], first: 1}, 
   `
-  name,
+  nation_name,
   cities {
     name  
   }`);
 
-console.log(`First city of ${nations[0].name}: ${nations[0].cities[0].name}`);
+console.log(`First city of ${nations[0].nation_name}: ${nations[0].cities[0].nation_name}`);
 ```
 
 If you want to have multiple copies of PnWKit running at the same time, you can use the Kit class export.
@@ -106,10 +107,10 @@ const cachableNationQuery = pnwkit.cached(
   1                   // How long that query can be cached at a time, in minutes
 );
 
-const nations = await cachableNationQuery({id: [100541], first: 1}, `name`);
+const nations = await cachableNationQuery({id: [100541], first: 1}, `nation_name`);
 
 // If you call it again within the age limit you'll get a cached version
-const nationsCached = await cachableNationQuery({id: [100541], first: 1}, `name`);
+const nationsCached = await cachableNationQuery({id: [100541], first: 1}, `nation_name`);
 ```
 
 
