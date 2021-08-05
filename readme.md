@@ -69,7 +69,7 @@ const nations = await pnwkit.nationQuery({id: [100541], first: 1},
     name  
   }`);
 
-console.log(`First city of ${nations[0].nation_name}: ${nations[0].cities[0].nation_name}`);
+console.log(`First city of ${nations[0].nation_name}: ${nations[0].cities[0].name}`);
 ```
 
 If you want to have multiple copies of PnWKit running at the same time, you can use the Kit class export.
