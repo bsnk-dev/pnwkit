@@ -38,5 +38,6 @@ for (const [key] of Object.entries(kit)) {
 }
 
 exports.setKey = kit.setKey;
+exports.cached = kit.cached;
 
 export default kit;
