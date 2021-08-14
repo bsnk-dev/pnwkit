@@ -2,6 +2,10 @@ export type Maybe<T> = T | null
 export type Exact<T extends { [key: string]: unknown }> = {
   [K in keyof T]: T[K]
 }
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> &
+  { [SubKey in K]?: Maybe<T[SubKey]> }
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> &
+  { [SubKey in K]: Maybe<T[SubKey]> }
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string
@@ -27,6 +31,9 @@ export type Query = {
 
 export type QueryNationsArgs = {
   id?: Maybe<Array<Maybe<Scalars['Int']>>>
+  name?: Maybe<Scalars['String']>
+  nation_name?: Maybe<Array<Maybe<Scalars['String']>>>
+  leader_name?: Maybe<Array<Maybe<Scalars['String']>>>
   alliance_id?: Maybe<Array<Maybe<Scalars['Int']>>>
   alliance_position?: Maybe<Scalars['Int']>
   color?: Maybe<Scalars['String']>
@@ -89,7 +96,6 @@ export type PaginatorInfo = {
 
 export type Nation = {
   __typename?: 'Nation'
-  [key: string]: any;
   id?: Maybe<Scalars['ID']>
   alliance_id?: Maybe<Scalars['ID']>
   alliance_position?: Maybe<AlliancePosition>
@@ -107,6 +113,7 @@ export type Nation = {
   flag?: Maybe<Scalars['String']>
   vmode?: Maybe<Scalars['Int']>
   beigeturns?: Maybe<Scalars['Int']>
+  espionage_available?: Maybe<Scalars['Boolean']>
   last_active?: Maybe<Scalars['DateTime']>
   date?: Maybe<Scalars['DateTime']>
   soldiers?: Maybe<Scalars['Int']>
@@ -226,7 +233,6 @@ export type Bankrec = {
 
 export type City = {
   __typename?: 'City'
-  [key: string]: any;
   id?: Maybe<Scalars['ID']>
   name?: Maybe<Scalars['String']>
   date?: Maybe<Scalars['Date']>

@@ -14,6 +14,9 @@ export enum AlliancePosition {
 export interface Parameters {
   first: number;
   id?: number[];
+  name?: string;
+  nation_name?: string[];
+  leader_name?: string[];
   alliance_id?: number[];
   alliance_position?: AlliancePosition;
   color?: string;

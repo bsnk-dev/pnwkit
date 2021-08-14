@@ -46,9 +46,22 @@ class GraphQLService {
       if (value === undefined) continue;
 
       if (typeof value == 'string') {
-        parameters.push(`${paramter}: ${value}`);
+        parameters.push(`${paramter}: "${value}"`);
       } else if (typeof value == 'object' && value?.length) {
-        parameters.push(`${paramter}: [${value.join(',')}]`);
+        let interpretedValue = `${paramter}: [`;
+
+        for (const v of value) {
+          if (typeof v == 'string') {
+            interpretedValue += `"${v}",`;
+          } else {
+            interpretedValue += `${v},`;
+          }
+        }
+
+        interpretedValue.slice(0, -1);
+        interpretedValue += ']';
+
+        parameters.push(interpretedValue);
       } else {
         parameters.push(`${paramter}: ${value}`);
       }
