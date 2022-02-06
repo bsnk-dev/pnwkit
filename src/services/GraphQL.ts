@@ -29,7 +29,7 @@ class GraphQLService {
           throw new Error(`GraphQLService: Failed to make api call, ${e}`);
         });
 
-    if (!res.body.data) throw new Error(`GraphQLService: Recieved no data from API call, ${JSON.stringify(res.body)}`);
+    if (!res.body.data) throw new Error(`GraphQLService: Received no data from API call, ${JSON.stringify(res.body)}`);
 
     return res.body.data;
   }
