@@ -5,6 +5,9 @@ import warQuery from './endpoints/WarQuery';
 import tradeQuery from './endpoints/TradeQuery';
 import treasureQuery from './endpoints/TreasureQuery';
 import colorQuery from './endpoints/ColorQuery';
+import bankRecordsQuery from './endpoints/BankRecordsQuery';
+import bountyQuery from './endpoints/BountyQuery';
+import cityQuery from './endpoints/CityQuery';
 
 export default class PnwKitAPI {
   nationQuery = nationQuery;
@@ -14,14 +17,7 @@ export default class PnwKitAPI {
   tradeQuery = tradeQuery;
   treasureQuery = treasureQuery;
   colorQuery = colorQuery;
+  bankRecordsQuery = bankRecordsQuery;
+  bountyQuery = bountyQuery;
+  cityQuery = cityQuery;
 }
-
-/* export type AnyQueryFunction =
-  typeof nationQuery |
-  typeof allianceQuery |
-  typeof tradePricesQuery |
-  typeof warQuery |
-  typeof tradeQuery |
-  typeof treasureQuery |
-  typeof colorQuery;
-*/
