@@ -1,5 +1,10 @@
 import {Kit} from '../..';
-import {Bounty, BountyPaginator, QueryBountiesArgs} from '../../interfaces/PoliticsAndWarGraphQL';
+import {
+  Bounty,
+  BountyPaginator,
+  QueryBountiesArgs,
+  QueryBountiesOrderByOrderByClause,
+} from '../../interfaces/PoliticsAndWarGraphQL';
 import GraphQL from '../../services/GraphQL';
 
 export interface Parameters {
@@ -9,6 +14,8 @@ export interface Parameters {
 
   first?: number;
   page?: number;
+
+  orderBy?: QueryBountiesOrderByOrderByClause;
 }
 
 /**
