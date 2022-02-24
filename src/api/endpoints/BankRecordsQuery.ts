@@ -2,7 +2,7 @@ import {Kit} from '../..';
 import {
   Bankrec,
   BankrecPaginator,
-  QueryBankrecsArgs,
+  QueryBankrecsArgs, QueryBankrecsOrderByOrderByClause,
 } from '../../interfaces/PoliticsAndWarGraphQL';
 import GraphQL from '../../services/GraphQL';
 
@@ -19,6 +19,7 @@ export interface Parameters {
 
   first?: number;
   page?: number;
+  orderBy?: QueryBankrecsOrderByOrderByClause;
 }
 
 /**
