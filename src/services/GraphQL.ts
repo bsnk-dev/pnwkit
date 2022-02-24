@@ -42,13 +42,13 @@ class GraphQLService {
   public generateParameters(queryParameters: AnyQuery) {
     const parameters: string[] = [];
 
-    for (const [paramter, value] of Object.entries(queryParameters)) {
+    for (const [parameter, value] of Object.entries(queryParameters)) {
       if (value === undefined) continue;
 
       if (typeof value == 'string') {
-        parameters.push(`${paramter}: "${value}"`);
-      } else if (typeof value == 'object' && value?.length) {
-        let interpretedValue = `${paramter}: [`;
+        parameters.push(`${parameter}: "${value}"`);
+      } else if (typeof value == 'object' && Array.isArray(value)) {
+        let interpretedValue = `${parameter}: [`;
 
         for (const v of value) {
           if (typeof v == 'string') {
@@ -62,8 +62,20 @@ class GraphQLService {
         interpretedValue += ']';
 
         parameters.push(interpretedValue);
+      } else if (typeof value == 'object' && !Array.isArray(value)) {
+        // for orderBy handling
+
+        let interpretedValue = '';
+        interpretedValue += `{`;
+
+        for (const [k, v] of Object.entries(value)) {
+          interpretedValue += `${k}: ${v},`;
+        }
+
+        interpretedValue = interpretedValue.slice(0, -1);
+        interpretedValue += '}';
       } else {
-        parameters.push(`${paramter}: ${value}`);
+        parameters.push(`${parameter}: ${value}`);
       }
     }
 
