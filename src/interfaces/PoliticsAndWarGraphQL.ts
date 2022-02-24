@@ -292,6 +292,7 @@ export type Alliance = {
   acronym?: Maybe<Scalars['String']>
   score?: Maybe<Scalars['Float']>
   color?: Maybe<Scalars['String']>
+  date?: Maybe<Scalars['DateTimeAuto']>
   nations: Array<Nation>
   /** @deprecated Use treaties instead */
   sent_treaties: Array<Treaty>
@@ -660,6 +661,7 @@ export type QueryTradesOrderByOrderByClause = {
 export enum QueryTradesOrderByColumn {
   Id = 'ID',
   Date = 'DATE',
+  DateAccepted = 'DATE_ACCEPTED',
   OfferResource = 'OFFER_RESOURCE',
   OfferAmount = 'OFFER_AMOUNT'
 }
@@ -978,6 +980,7 @@ export type SimplePaginatorInfo = {
   firstItem?: Maybe<Scalars['Int']>
   lastItem?: Maybe<Scalars['Int']>
   perPage: Scalars['Int']
+  hasMorePages: Scalars['Boolean']
 }
 
 export type PageInfo = {
