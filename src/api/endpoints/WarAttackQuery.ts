@@ -1,14 +1,21 @@
 import {Kit} from '../..';
-import {Bounty, BountyPaginator, QueryBountiesArgs} from '../../interfaces/PoliticsAndWarGraphQL';
+import {
+  QueryWarattacksArgs,
+  QueryWarattacksOrderByOrderByClause, WarAttack, WarAttackPaginator,
+} from '../../interfaces/PoliticsAndWarGraphQL';
 import GraphQL from '../../services/GraphQL';
 
 export interface Parameters {
-  nation_id?: number[];
-  min_amount?: number;
-  max_amount?: number;
+  id?: number[];
+  min_id?: number;
+  max_id?: number;
+
+  war_id?: number[];
 
   first?: number;
   page?: number;
+
+  orderBy?: QueryWarattacksOrderByOrderByClause;
 }
 
 /**
@@ -16,35 +23,29 @@ export interface Parameters {
  * @param {Parameters} params Query parameters to customize your results
  * @param {string} query The graphql query to get info with
  * @param {boolean} paginator If true it will return paginator info
- * @return {Promise<[] | BountyPaginator>}
+ * @return {Promise<WarAttack[] | WarAttackPaginator>}
  */
-/*
-export default async function warAttackQuery(this: Kit, params: Parameters, query: string, paginator?: false): Promise<Bounty[]>;
-export default async function warAttackQuery(this: Kit, params: Parameters, query: string, paginator: true): Promise<BountyPaginator>;
+export default async function warAttackQuery(this: Kit, params: Parameters, query: string, paginator?: false): Promise<WarAttack[]>;
+export default async function warAttackQuery(this: Kit, params: Parameters, query: string, paginator: true): Promise<WarAttackPaginator>;
 export default async function warAttackQuery(
     this: Kit,
     params: Parameters,
     query: string,
     paginator?: boolean,
-): Promise<Bounty[] | BountyPaginator> {
-  const argsToParameters = GraphQL.generateParameters(params as QueryBountiesArgs);
+): Promise<WarAttack[] | WarAttackPaginator> {
+  const argsToParameters = GraphQL.generateParameters(params as QueryWarattacksArgs);
 
   const res = await GraphQL.makeCall(`
     {
-      bounties${argsToParameters} {
+      warattacks${argsToParameters} {
         ${query}
       }
     }
   `, this.apiKey);
 
   if (paginator) {
-    return res.bounties;
+    return res.warattacks;
   }
 
-  return res.bounties.data as Bounty[];
-}
-*/
-
-export default function warAttackQuery(): void {
-  throw new Error('Not implemented');
+  return res.warattacks.data as WarAttack[];
 }
