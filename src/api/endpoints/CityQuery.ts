@@ -1,5 +1,10 @@
 import {Kit} from '../..';
-import {City, CityPaginator, QueryCitiesArgs} from '../../interfaces/PoliticsAndWarGraphQL';
+import {
+  City,
+  CityPaginator,
+  QueryCitiesArgs,
+  QueryCitiesOrderByOrderByClause,
+} from '../../interfaces/PoliticsAndWarGraphQL';
 import GraphQL from '../../services/GraphQL';
 
 export interface Parameters {
@@ -8,6 +13,8 @@ export interface Parameters {
 
   first?: number;
   page?: number;
+
+  orderBy?: QueryCitiesOrderByOrderByClause;
 }
 
 /**
