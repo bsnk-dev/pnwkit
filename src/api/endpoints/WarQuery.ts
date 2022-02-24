@@ -1,5 +1,5 @@
 import {Kit} from '../..';
-import {QueryWarsArgs, War, WarPaginator} from '../../interfaces/PoliticsAndWarGraphQL';
+import {QueryWarsArgs, QueryWarsOrderByOrderByClause, War, WarPaginator} from '../../interfaces/PoliticsAndWarGraphQL';
 import GraphQL from '../../services/GraphQL';
 
 export interface Parameters {
@@ -8,9 +8,10 @@ export interface Parameters {
   active?: boolean;
   nation_id?: string[];
   alliance_id?: string[];
-
   first?: number;
   page?: number;
+
+  orderBy?: QueryWarsOrderByOrderByClause
 }
 
 /**
