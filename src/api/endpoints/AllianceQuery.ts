@@ -1,11 +1,16 @@
 import {Kit} from '../..';
-import {Alliance, AlliancePaginator, QueryAlliancesArgs} from '../../interfaces/PoliticsAndWarGraphQL';
+import {
+  Alliance,
+  AlliancePaginator,
+  QueryAlliancesArgs, QueryAlliancesOrderByOrderByClause,
+} from '../../interfaces/PoliticsAndWarGraphQL';
 import GraphQL from '../../services/GraphQL';
 
 export interface Parameters {
   first: number;
   id?: number[];
   page?: number;
+  orderBy?: QueryAlliancesOrderByOrderByClause;
 }
 
 /**
