@@ -36,6 +36,10 @@ Install the library using NPM.
   ```sh
   npm i --save pnwkit
   ```
+  
+### Future Plans
+
+Baseball queries are coming soon with v2.1.0!
 
 ## Usage
 
@@ -123,6 +127,10 @@ You can also do the following queries in PnWKit:
 - warQuery
 - treasureQuery
 - colorQuery
+- bountyQuery
+- cityQuery
+- warAttackQuery
+- bankRecordsQuery
 
 You can look at the arguments and possible data to collect here at the [docs](https://bsnk-dev.github.io/pnwkit/).
 
