@@ -13,7 +13,7 @@ export class Kit extends PnwKitAPI {
    * Set the pnwkit instance's key.
    * @param key
    */
-  setKey(key: string) {
+  setKey(key: string): void {
     this.apiKey = key;
   }
 

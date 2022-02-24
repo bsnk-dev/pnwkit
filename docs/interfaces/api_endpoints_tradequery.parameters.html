@@ -85,9 +85,10 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="api_endpoints_tradequery.parameters.html#accepted" class="tsd-kind-icon">accepted</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="api_endpoints_tradequery.parameters.html#buy_or_sell" class="tsd-kind-icon">buy_<wbr>or_<wbr>sell</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="api_endpoints_tradequery.parameters.html#limit" class="tsd-kind-icon">limit</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="api_endpoints_tradequery.parameters.html#first" class="tsd-kind-icon">first</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="api_endpoints_tradequery.parameters.html#nation_id" class="tsd-kind-icon">nation_<wbr>id</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="api_endpoints_tradequery.parameters.html#offer_resource" class="tsd-kind-icon">offer_<wbr>resource</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="api_endpoints_tradequery.parameters.html#orderby" class="tsd-kind-icon">order<wbr>By</a></li>
 							</ul>
 						</section>
 					</div>
@@ -101,7 +102,7 @@
 					<div class="tsd-signature tsd-kind-icon">accepted<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/bsnk-dev/pnwkit/blob/d8449c2/src/api/endpoints/TradeQuery.ts#L10">api/endpoints/TradeQuery.ts:10</a></li>
+							<li>Defined in <a href="https://github.com/bsnk-dev/pnwkit/blob/697e28a/src/api/endpoints/TradeQuery.ts#L14">api/endpoints/TradeQuery.ts:14</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -111,17 +112,17 @@
 					<div class="tsd-signature tsd-kind-icon">buy_<wbr>or_<wbr>sell<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/bsnk-dev/pnwkit/blob/d8449c2/src/api/endpoints/TradeQuery.ts#L9">api/endpoints/TradeQuery.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/bsnk-dev/pnwkit/blob/697e28a/src/api/endpoints/TradeQuery.ts#L13">api/endpoints/TradeQuery.ts:13</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="limit" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> limit</h3>
-					<div class="tsd-signature tsd-kind-icon">limit<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<a name="first" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> first</h3>
+					<div class="tsd-signature tsd-kind-icon">first<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/bsnk-dev/pnwkit/blob/d8449c2/src/api/endpoints/TradeQuery.ts#L6">api/endpoints/TradeQuery.ts:6</a></li>
+							<li>Defined in <a href="https://github.com/bsnk-dev/pnwkit/blob/697e28a/src/api/endpoints/TradeQuery.ts#L10">api/endpoints/TradeQuery.ts:10</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -131,7 +132,7 @@
 					<div class="tsd-signature tsd-kind-icon">nation_<wbr>id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/bsnk-dev/pnwkit/blob/d8449c2/src/api/endpoints/TradeQuery.ts#L7">api/endpoints/TradeQuery.ts:7</a></li>
+							<li>Defined in <a href="https://github.com/bsnk-dev/pnwkit/blob/697e28a/src/api/endpoints/TradeQuery.ts#L11">api/endpoints/TradeQuery.ts:11</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -141,7 +142,17 @@
 					<div class="tsd-signature tsd-kind-icon">offer_<wbr>resource<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/bsnk-dev/pnwkit/blob/d8449c2/src/api/endpoints/TradeQuery.ts#L8">api/endpoints/TradeQuery.ts:8</a></li>
+							<li>Defined in <a href="https://github.com/bsnk-dev/pnwkit/blob/697e28a/src/api/endpoints/TradeQuery.ts#L12">api/endpoints/TradeQuery.ts:12</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="orderby" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> order<wbr>By</h3>
+					<div class="tsd-signature tsd-kind-icon">order<wbr>By<span class="tsd-signature-symbol">:</span> <a href="../modules/interfaces_politicsandwargraphql.html#querytradesorderbyorderbyclause" class="tsd-signature-type" data-tsd-kind="Type alias">QueryTradesOrderByOrderByClause</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/bsnk-dev/pnwkit/blob/697e28a/src/api/endpoints/TradeQuery.ts#L16">api/endpoints/TradeQuery.ts:16</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -160,6 +171,15 @@
 						<a href="../modules/api_endpoints_alliancequery.html">api/endpoints/<wbr>Alliance<wbr>Query</a>
 					</li>
 					<li class=" tsd-kind-module">
+						<a href="../modules/api_endpoints_bankrecordsquery.html">api/endpoints/<wbr>Bank<wbr>Records<wbr>Query</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/api_endpoints_bountyquery.html">api/endpoints/<wbr>Bounty<wbr>Query</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/api_endpoints_cityquery.html">api/endpoints/<wbr>City<wbr>Query</a>
+					</li>
+					<li class=" tsd-kind-module">
 						<a href="../modules/api_endpoints_colorquery.html">api/endpoints/<wbr>Color<wbr>Query</a>
 					</li>
 					<li class=" tsd-kind-module">
@@ -173,6 +193,9 @@
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="../modules/api_endpoints_treasurequery.html">api/endpoints/<wbr>Treasure<wbr>Query</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/api_endpoints_warattackquery.html">api/endpoints/<wbr>War<wbr>Attack<wbr>Query</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="../modules/api_endpoints_warquery.html">api/endpoints/<wbr>War<wbr>Query</a>
@@ -199,13 +222,16 @@
 								<a href="api_endpoints_tradequery.parameters.html#buy_or_sell" class="tsd-kind-icon">buy_<wbr>or_<wbr>sell</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="api_endpoints_tradequery.parameters.html#limit" class="tsd-kind-icon">limit</a>
+								<a href="api_endpoints_tradequery.parameters.html#first" class="tsd-kind-icon">first</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="api_endpoints_tradequery.parameters.html#nation_id" class="tsd-kind-icon">nation_<wbr>id</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="api_endpoints_tradequery.parameters.html#offer_resource" class="tsd-kind-icon">offer_<wbr>resource</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="api_endpoints_tradequery.parameters.html#orderby" class="tsd-kind-icon">order<wbr>By</a>
 							</li>
 						</ul>
 					</li>

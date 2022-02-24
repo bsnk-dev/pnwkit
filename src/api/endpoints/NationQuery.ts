@@ -1,5 +1,10 @@
 import {Kit} from '../..';
-import {Nation, NationPaginator, QueryNationsArgs} from '../../interfaces/PoliticsAndWarGraphQL';
+import {
+  Nation,
+  NationPaginator,
+  QueryNationsArgs,
+  QueryNationsOrderByOrderByClause,
+} from '../../interfaces/PoliticsAndWarGraphQL';
 import GraphQL from '../../services/GraphQL';
 
 export enum AlliancePosition {
@@ -28,6 +33,7 @@ export interface Parameters {
   max_cities?: number;
   vmode?: boolean;
   page?: number;
+  orderBy?: QueryNationsOrderByOrderByClause;
 }
 
 /**

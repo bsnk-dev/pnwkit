@@ -1,3 +1,14 @@
+export type AnyQuery =
+  QueryNationsArgs |
+  QueryAlliancesArgs |
+  QueryTradepricesArgs |
+  QueryTradesArgs |
+  QueryWarsArgs |
+  QueryBankrecsArgs |
+  QueryBountiesArgs |
+  QueryCitiesArgs |
+  QueryWarattacksArgs;
+
 export type Maybe<T> = T | null
 export type Exact<T extends { [key: string]: unknown }> = {
   [K in keyof T]: T[K]
@@ -13,6 +24,7 @@ export type Scalars = {
   Boolean: boolean
   Int: number
   Float: number
+  DateTimeAuto: any
   Date: any
   DateTime: any
   DateTimeTz: any
@@ -20,78 +32,155 @@ export type Scalars = {
 
 export type Query = {
   __typename?: 'Query'
-  nations?: Maybe<NationPaginator>
-  alliances?: Maybe<AlliancePaginator>
-  tradeprices?: Maybe<Array<Maybe<Tradeprice>>>
-  trades?: Maybe<Array<Maybe<Trade>>>
-  wars?: Maybe<Array<Maybe<War>>>
+  me?: Maybe<ApiKeyDetails>
   treasures?: Maybe<Array<Maybe<Treasure>>>
   colors?: Maybe<Array<Maybe<Color>>>
+  game_info?: Maybe<GameInfo>
+  nations?: Maybe<NationPaginator>
+  alliances?: Maybe<AlliancePaginator>
+  tradeprices?: Maybe<TradepricePaginator>
+  trades?: Maybe<TradePaginator>
+  wars?: Maybe<WarPaginator>
+  bounties?: Maybe<BountyPaginator>
+  warattacks?: Maybe<WarAttackPaginator>
+  treaties?: Maybe<TreatyPaginator>
+  cities?: Maybe<CityPaginator>
+  bankrecs?: Maybe<BankrecPaginator>
+  baseball_games?: Maybe<BbGamePaginator>
+  baseball_teams?: Maybe<BbTeamPaginator>
+  baseball_players?: Maybe<BbPlayerPaginator>
 }
 
 export type QueryNationsArgs = {
   id?: Maybe<Array<Maybe<Scalars['Int']>>>
-  name?: Maybe<Scalars['String']>
   nation_name?: Maybe<Array<Maybe<Scalars['String']>>>
   leader_name?: Maybe<Array<Maybe<Scalars['String']>>>
   alliance_id?: Maybe<Array<Maybe<Scalars['Int']>>>
-  alliance_position?: Maybe<Scalars['Int']>
+  alliance_position?: Maybe<Array<Maybe<Scalars['Int']>>>
   color?: Maybe<Scalars['String']>
-  created_after?: Maybe<Scalars['Date']>
+  created_after?: Maybe<Scalars['DateTime']>
   min_score?: Maybe<Scalars['Float']>
   max_score?: Maybe<Scalars['Float']>
-  cities?: Maybe<Scalars['Int']>
+  cities?: Maybe<Array<Maybe<Scalars['Int']>>>
   min_cities?: Maybe<Scalars['Int']>
   max_cities?: Maybe<Scalars['Int']>
   vmode?: Maybe<Scalars['Boolean']>
-  first: Scalars['Int']
+  discord?: Maybe<Array<Maybe<Scalars['String']>>>
+  orderBy?: Maybe<Array<QueryNationsOrderByOrderByClause>>
+  first?: Maybe<Scalars['Int']>
   page?: Maybe<Scalars['Int']>
 }
 
 export type QueryAlliancesArgs = {
   id?: Maybe<Array<Maybe<Scalars['Int']>>>
-  first: Scalars['Int']
+  name?: Maybe<Array<Maybe<Scalars['String']>>>
+  orderBy?: Maybe<Array<QueryAlliancesOrderByOrderByClause>>
+  first?: Maybe<Scalars['Int']>
   page?: Maybe<Scalars['Int']>
 }
 
 export type QueryTradepricesArgs = {
-  limit?: Maybe<Scalars['Int']>
+  first?: Maybe<Scalars['Int']>
+  page?: Maybe<Scalars['Int']>
 }
 
 export type QueryTradesArgs = {
-  limit?: Maybe<Scalars['Int']>
-  nation_id?: Maybe<Array<Maybe<Scalars['ID']>>>
+  id?: Maybe<Array<Maybe<Scalars['Int']>>>
+  type?: Maybe<TradeType>
+  nation_id?: Maybe<Array<Maybe<Scalars['Int']>>>
   offer_resource?: Maybe<Scalars['String']>
   buy_or_sell?: Maybe<Scalars['String']>
   accepted?: Maybe<Scalars['Boolean']>
+  orderBy?: Maybe<Array<QueryTradesOrderByOrderByClause>>
+  first?: Maybe<Scalars['Int']>
+  page?: Maybe<Scalars['Int']>
 }
 
 export type QueryWarsArgs = {
   id?: Maybe<Array<Maybe<Scalars['Int']>>>
-  days_ago?: Maybe<Scalars['Int']>
   active?: Maybe<Scalars['Boolean']>
-  nation_id?: Maybe<Array<Maybe<Scalars['ID']>>>
-  alliance_id?: Maybe<Array<Maybe<Scalars['ID']>>>
+  nation_id?: Maybe<Array<Maybe<Scalars['Int']>>>
+  alliance_id?: Maybe<Array<Maybe<Scalars['Int']>>>
+  min_id?: Maybe<Scalars['Int']>
+  max_id?: Maybe<Scalars['Int']>
+  orderBy?: Maybe<Array<QueryWarsOrderByOrderByClause>>
+  first?: Maybe<Scalars['Int']>
+  page?: Maybe<Scalars['Int']>
 }
 
-export type AnyQuery = QueryNationsArgs | QueryAlliancesArgs | QueryTradepricesArgs | QueryTradesArgs | QueryWarsArgs;
-
-export type NationPaginator = {
-  __typename?: 'NationPaginator'
-  paginatorInfo: PaginatorInfo
-  data: Array<Nation>
+export type QueryBountiesArgs = {
+  nation_id?: Maybe<Array<Maybe<Scalars['Int']>>>
+  min_amount?: Maybe<Scalars['Float']>
+  max_amount?: Maybe<Scalars['Float']>
+  orderBy?: Maybe<Array<QueryBountiesOrderByOrderByClause>>
+  first?: Maybe<Scalars['Int']>
+  page?: Maybe<Scalars['Int']>
 }
 
-export type PaginatorInfo = {
-  __typename?: 'PaginatorInfo'
-  count: Scalars['Int']
-  currentPage: Scalars['Int']
-  firstItem?: Maybe<Scalars['Int']>
-  hasMorePages: Scalars['Boolean']
-  lastItem?: Maybe<Scalars['Int']>
-  lastPage: Scalars['Int']
-  perPage: Scalars['Int']
-  total: Scalars['Int']
+export type QueryWarattacksArgs = {
+  id?: Maybe<Array<Maybe<Scalars['Int']>>>
+  min_id?: Maybe<Scalars['Int']>
+  max_id?: Maybe<Scalars['Int']>
+  war_id?: Maybe<Array<Maybe<Scalars['Int']>>>
+  orderBy?: Maybe<Array<QueryWarattacksOrderByOrderByClause>>
+  first?: Maybe<Scalars['Int']>
+  page?: Maybe<Scalars['Int']>
+}
+
+export type QueryTreatiesArgs = {
+  id?: Maybe<Array<Maybe<Scalars['Int']>>>
+  limit?: Maybe<Scalars['Int']>
+  orderBy?: Maybe<Array<QueryTreatiesOrderByOrderByClause>>
+  first?: Maybe<Scalars['Int']>
+  page?: Maybe<Scalars['Int']>
+}
+
+export type QueryCitiesArgs = {
+  id?: Maybe<Array<Maybe<Scalars['Int']>>>
+  nation_id?: Maybe<Array<Maybe<Scalars['Int']>>>
+  orderBy?: Maybe<Array<QueryCitiesOrderByOrderByClause>>
+  first?: Maybe<Scalars['Int']>
+  page?: Maybe<Scalars['Int']>
+}
+
+export type QueryBankrecsArgs = {
+  id?: Maybe<Array<Maybe<Scalars['Int']>>>
+  stype?: Maybe<Array<Maybe<Scalars['Int']>>>
+  rtype?: Maybe<Array<Maybe<Scalars['Int']>>>
+  or_type?: Maybe<Array<Maybe<Scalars['Int']>>>
+  sid?: Maybe<Array<Maybe<Scalars['Int']>>>
+  rid?: Maybe<Array<Maybe<Scalars['Int']>>>
+  or_id?: Maybe<Array<Maybe<Scalars['Int']>>>
+  orderBy?: Maybe<Array<QueryBankrecsOrderByOrderByClause>>
+  first?: Maybe<Scalars['Int']>
+  page?: Maybe<Scalars['Int']>
+}
+
+export type QueryBaseball_GamesArgs = {
+  team_id?: Maybe<Array<Maybe<Scalars['Int']>>>
+  orderBy?: Maybe<Array<QueryBaseballGamesOrderByOrderByClause>>
+  first?: Maybe<Scalars['Int']>
+  page?: Maybe<Scalars['Int']>
+}
+
+export type QueryBaseball_TeamsArgs = {
+  id?: Maybe<Array<Maybe<Scalars['Int']>>>
+  orderBy?: Maybe<Array<QueryBaseballTeamsOrderByOrderByClause>>
+  first?: Maybe<Scalars['Int']>
+  page?: Maybe<Scalars['Int']>
+}
+
+export type QueryBaseball_PlayersArgs = {
+  id?: Maybe<Array<Maybe<Scalars['Int']>>>
+  team_id?: Maybe<Array<Maybe<Scalars['Int']>>>
+  orderBy?: Maybe<Array<QueryBaseballPlayersOrderByOrderByClause>>
+  first?: Maybe<Scalars['Int']>
+  page?: Maybe<Scalars['Int']>
+}
+
+export type ApiKeyDetails = {
+  __typename?: 'ApiKeyDetails'
+  nation?: Maybe<Nation>
 }
 
 export type Nation = {
@@ -109,24 +198,37 @@ export type Nation = {
   num_cities?: Maybe<Scalars['Int']>
   cities: Array<City>
   score?: Maybe<Scalars['Float']>
+  update_tz?: Maybe<Scalars['Float']>
   population?: Maybe<Scalars['Int']>
   flag?: Maybe<Scalars['String']>
   vmode?: Maybe<Scalars['Int']>
   beigeturns?: Maybe<Scalars['Int']>
   espionage_available?: Maybe<Scalars['Boolean']>
-  last_active?: Maybe<Scalars['DateTime']>
-  date?: Maybe<Scalars['DateTime']>
+  last_active?: Maybe<Scalars['DateTimeAuto']>
+  date?: Maybe<Scalars['DateTimeAuto']>
   soldiers?: Maybe<Scalars['Int']>
   tanks?: Maybe<Scalars['Int']>
   aircraft?: Maybe<Scalars['Int']>
   ships?: Maybe<Scalars['Int']>
   missiles?: Maybe<Scalars['Int']>
   nukes?: Maybe<Scalars['Int']>
+  spies?: Maybe<Scalars['Int']>
+  discord?: Maybe<Scalars['String']>
   treasures: Array<Treasure>
+  /** @deprecated Use wars instead */
   offensive_wars: Array<War>
+  /** @deprecated Use wars instead */
   defensive_wars: Array<War>
+  wars: Array<War>
+  /** @deprecated Use bankrecs instead */
   sent_bankrecs: Array<Bankrec>
+  /** @deprecated Use bankrecs instead */
   received_bankrecs: Array<Bankrec>
+  bankrecs?: Maybe<Array<Maybe<Bankrec>>>
+  taxrecs?: Maybe<Array<Maybe<Bankrec>>>
+  bounties?: Maybe<Array<Maybe<Bounty>>>
+  turns_since_last_city?: Maybe<Scalars['Int']>
+  turns_since_last_project?: Maybe<Scalars['Int']>
   money?: Maybe<Scalars['Float']>
   coal?: Maybe<Scalars['Float']>
   oil?: Maybe<Scalars['Float']>
@@ -140,6 +242,7 @@ export type Nation = {
   aluminum?: Maybe<Scalars['Float']>
   food?: Maybe<Scalars['Float']>
   projects?: Maybe<Scalars['Int']>
+  project_bits?: Maybe<Scalars['Int']>
   ironw?: Maybe<Scalars['Boolean']>
   bauxitew?: Maybe<Scalars['Boolean']>
   armss?: Maybe<Scalars['Boolean']>
@@ -167,6 +270,10 @@ export type Nation = {
   clinical_research_center?: Maybe<Scalars['Boolean']>
   specialized_police_training?: Maybe<Scalars['Boolean']>
   adv_engineering_corps?: Maybe<Scalars['Boolean']>
+  wars_won?: Maybe<Scalars['Int']>
+  wars_lost?: Maybe<Scalars['Int']>
+  tax_id?: Maybe<Scalars['ID']>
+  alliance_seniority?: Maybe<Scalars['Int']>
 }
 
 export enum AlliancePosition {
@@ -185,13 +292,20 @@ export type Alliance = {
   acronym?: Maybe<Scalars['String']>
   score?: Maybe<Scalars['Float']>
   color?: Maybe<Scalars['String']>
+  date?: Maybe<Scalars['DateTimeAuto']>
   nations: Array<Nation>
+  /** @deprecated Use treaties instead */
+  sent_treaties: Array<Treaty>
+  /** @deprecated Use treaties instead */
+  received_treaties: Array<Treaty>
+  treaties: Array<Treaty>
   acceptmem?: Maybe<Scalars['Boolean']>
   flag?: Maybe<Scalars['String']>
   forumlink?: Maybe<Scalars['String']>
   irclink?: Maybe<Scalars['String']>
   bankrecs?: Maybe<Array<Maybe<Bankrec>>>
   taxrecs?: Maybe<Array<Maybe<Bankrec>>>
+  tax_brackets?: Maybe<Array<Maybe<TaxBracket>>>
   money?: Maybe<Scalars['Float']>
   coal?: Maybe<Scalars['Float']>
   oil?: Maybe<Scalars['Float']>
@@ -206,10 +320,22 @@ export type Alliance = {
   food?: Maybe<Scalars['Float']>
 }
 
+export type Treaty = {
+  __typename?: 'Treaty'
+  id?: Maybe<Scalars['ID']>
+  date?: Maybe<Scalars['DateTimeAuto']>
+  treaty_type?: Maybe<Scalars['String']>
+  turns_left?: Maybe<Scalars['Int']>
+  alliance1_id?: Maybe<Scalars['ID']>
+  alliance1?: Maybe<Alliance>
+  alliance2_id?: Maybe<Scalars['ID']>
+  alliance2?: Maybe<Alliance>
+}
+
 export type Bankrec = {
   __typename?: 'Bankrec'
   id?: Maybe<Scalars['ID']>
-  date?: Maybe<Scalars['DateTime']>
+  date?: Maybe<Scalars['DateTimeAuto']>
   sid?: Maybe<Scalars['ID']>
   stype?: Maybe<Scalars['Int']>
   rid?: Maybe<Scalars['ID']>
@@ -231,9 +357,25 @@ export type Bankrec = {
   tax_id?: Maybe<Scalars['ID']>
 }
 
+export type TaxBracket = {
+  __typename?: 'TaxBracket'
+  id?: Maybe<Scalars['ID']>
+  alliance_id?: Maybe<Scalars['ID']>
+  alliance?: Maybe<Alliance>
+  date?: Maybe<Scalars['DateTimeAuto']>
+  date_modified?: Maybe<Scalars['DateTimeAuto']>
+  last_modifier_id?: Maybe<Scalars['ID']>
+  last_modifier?: Maybe<Nation>
+  tax_rate?: Maybe<Scalars['Int']>
+  resource_tax_rate?: Maybe<Scalars['Int']>
+  bracket_name?: Maybe<Scalars['String']>
+}
+
 export type City = {
   __typename?: 'City'
   id?: Maybe<Scalars['ID']>
+  nation_id?: Maybe<Scalars['ID']>
+  nation?: Maybe<Nation>
   name?: Maybe<Scalars['String']>
   date?: Maybe<Scalars['Date']>
   infrastructure?: Maybe<Scalars['Float']>
@@ -266,6 +408,7 @@ export type City = {
   factory?: Maybe<Scalars['Int']>
   airforcebase?: Maybe<Scalars['Int']>
   drydock?: Maybe<Scalars['Int']>
+  nukedate?: Maybe<Scalars['DateTimeAuto']>
 }
 
 export type Treasure = {
@@ -281,7 +424,7 @@ export type Treasure = {
 export type War = {
   __typename?: 'War'
   id?: Maybe<Scalars['ID']>
-  date?: Maybe<Scalars['DateTime']>
+  date?: Maybe<Scalars['DateTimeAuto']>
   reason?: Maybe<Scalars['String']>
   war_type?: Maybe<WarType>
   groundcontrol?: Maybe<Scalars['ID']>
@@ -341,8 +484,14 @@ export enum WarType {
 export type WarAttack = {
   __typename?: 'WarAttack'
   id?: Maybe<Scalars['ID']>
-  date?: Maybe<Scalars['DateTime']>
+  date?: Maybe<Scalars['DateTimeAuto']>
+  attid?: Maybe<Scalars['ID']>
+  attacker?: Maybe<Nation>
+  defid?: Maybe<Scalars['ID']>
+  defender?: Maybe<Nation>
   type?: Maybe<AttackType>
+  warid?: Maybe<Scalars['ID']>
+  war?: Maybe<War>
   victor?: Maybe<Scalars['ID']>
   success?: Maybe<Scalars['Int']>
   attcas1?: Maybe<Scalars['Int']>
@@ -361,6 +510,7 @@ export type WarAttack = {
   def_mun_used?: Maybe<Scalars['Float']>
   att_gas_used?: Maybe<Scalars['Float']>
   def_gas_used?: Maybe<Scalars['Float']>
+  aircraft_killed_by_tanks?: Maybe<Scalars['Int']>
 }
 
 export enum AttackType {
@@ -382,10 +532,101 @@ export enum AttackType {
   Allianceloot = 'ALLIANCELOOT'
 }
 
+export type Bounty = {
+  __typename?: 'Bounty'
+  id?: Maybe<Scalars['ID']>
+  date?: Maybe<Scalars['Date']>
+  nation_id?: Maybe<Scalars['ID']>
+  nation?: Maybe<Nation>
+  amount?: Maybe<Scalars['Int']>
+  war_type?: Maybe<WarType>
+}
+
+export type Color = {
+  __typename?: 'Color'
+  color?: Maybe<Scalars['String']>
+  bloc_name?: Maybe<Scalars['String']>
+  turn_bonus?: Maybe<Scalars['Int']>
+}
+
+export type GameInfo = {
+  __typename?: 'GameInfo'
+  game_date?: Maybe<Scalars['DateTimeAuto']>
+  radiation?: Maybe<Radiation>
+}
+
+export type Radiation = {
+  __typename?: 'Radiation'
+  global?: Maybe<Scalars['Float']>
+  north_america?: Maybe<Scalars['Float']>
+  south_america?: Maybe<Scalars['Float']>
+  europe?: Maybe<Scalars['Float']>
+  africa?: Maybe<Scalars['Float']>
+  asia?: Maybe<Scalars['Float']>
+  australia?: Maybe<Scalars['Float']>
+  antarctica?: Maybe<Scalars['Float']>
+}
+
+export type QueryNationsOrderByOrderByClause = {
+  column: QueryNationsOrderByColumn
+  order: SortOrder
+}
+
+export enum QueryNationsOrderByColumn {
+  Id = 'ID',
+  Date = 'DATE',
+  Soldiers = 'SOLDIERS',
+  Tanks = 'TANKS',
+  Aircraft = 'AIRCRAFT',
+  Ships = 'SHIPS',
+  Missiles = 'MISSILES',
+  Nukes = 'NUKES'
+}
+
+export enum SortOrder {
+  Asc = 'ASC',
+  Desc = 'DESC'
+}
+
+export type NationPaginator = {
+  __typename?: 'NationPaginator'
+  paginatorInfo: PaginatorInfo
+  data: Array<Nation>
+}
+
+export type PaginatorInfo = {
+  __typename?: 'PaginatorInfo'
+  count: Scalars['Int']
+  currentPage: Scalars['Int']
+  firstItem?: Maybe<Scalars['Int']>
+  hasMorePages: Scalars['Boolean']
+  lastItem?: Maybe<Scalars['Int']>
+  lastPage: Scalars['Int']
+  perPage: Scalars['Int']
+  total: Scalars['Int']
+}
+
+export type QueryAlliancesOrderByOrderByClause = {
+  column: QueryAlliancesOrderByColumn
+  order: SortOrder
+}
+
+export enum QueryAlliancesOrderByColumn {
+  Id = 'ID',
+  Date = 'DATE',
+  Score = 'SCORE'
+}
+
 export type AlliancePaginator = {
   __typename?: 'AlliancePaginator'
   paginatorInfo: PaginatorInfo
   data: Array<Alliance>
+}
+
+export type TradepricePaginator = {
+  __typename?: 'TradepricePaginator'
+  paginatorInfo: PaginatorInfo
+  data: Array<Tradeprice>
 }
 
 export type Tradeprice = {
@@ -406,10 +647,36 @@ export type Tradeprice = {
   credits?: Maybe<Scalars['Float']>
 }
 
+export enum TradeType {
+  Global = 'GLOBAL',
+  Personal = 'PERSONAL',
+  Alliance = 'ALLIANCE'
+}
+
+export type QueryTradesOrderByOrderByClause = {
+  column: QueryTradesOrderByColumn
+  order: SortOrder
+}
+
+export enum QueryTradesOrderByColumn {
+  Id = 'ID',
+  Date = 'DATE',
+  DateAccepted = 'DATE_ACCEPTED',
+  OfferResource = 'OFFER_RESOURCE',
+  OfferAmount = 'OFFER_AMOUNT'
+}
+
+export type TradePaginator = {
+  __typename?: 'TradePaginator'
+  paginatorInfo: PaginatorInfo
+  data: Array<Trade>
+}
+
 export type Trade = {
   __typename?: 'Trade'
   id?: Maybe<Scalars['ID']>
-  date?: Maybe<Scalars['DateTime']>
+  type?: Maybe<TradeType>
+  date?: Maybe<Scalars['DateTimeAuto']>
   sid?: Maybe<Scalars['ID']>
   rid?: Maybe<Scalars['ID']>
   sender?: Maybe<Nation>
@@ -419,14 +686,301 @@ export type Trade = {
   buy_or_sell?: Maybe<Scalars['String']>
   total?: Maybe<Scalars['Int']>
   accepted?: Maybe<Scalars['Boolean']>
-  date_accepted?: Maybe<Scalars['DateTime']>
+  date_accepted?: Maybe<Scalars['DateTimeAuto']>
 }
 
-export type Color = {
-  __typename?: 'Color'
-  color?: Maybe<Scalars['String']>
-  bloc_name?: Maybe<Scalars['String']>
-  turn_bonus?: Maybe<Scalars['Int']>
+export type QueryWarsOrderByOrderByClause = {
+  column: QueryWarsOrderByColumn
+  order: SortOrder
+}
+
+export enum QueryWarsOrderByColumn {
+  Id = 'ID',
+  Date = 'DATE'
+}
+
+export type WarPaginator = {
+  __typename?: 'WarPaginator'
+  paginatorInfo: PaginatorInfo
+  data: Array<War>
+}
+
+export type QueryBountiesOrderByOrderByClause = {
+  column: QueryBountiesOrderByColumn
+  order: SortOrder
+}
+
+export enum QueryBountiesOrderByColumn {
+  Id = 'ID',
+  Date = 'DATE',
+  Amount = 'AMOUNT'
+}
+
+export type BountyPaginator = {
+  __typename?: 'BountyPaginator'
+  paginatorInfo: PaginatorInfo
+  data: Array<Bounty>
+}
+
+export type QueryWarattacksOrderByOrderByClause = {
+  column: QueryWarattacksOrderByColumn
+  order: SortOrder
+}
+
+export enum QueryWarattacksOrderByColumn {
+  Id = 'ID',
+  Date = 'DATE'
+}
+
+export type WarAttackPaginator = {
+  __typename?: 'WarAttackPaginator'
+  paginatorInfo: PaginatorInfo
+  data: Array<WarAttack>
+}
+
+export type QueryTreatiesOrderByOrderByClause = {
+  column: QueryTreatiesOrderByColumn
+  order: SortOrder
+}
+
+export enum QueryTreatiesOrderByColumn {
+  Id = 'ID',
+  Date = 'DATE',
+  TurnsLeft = 'TURNS_LEFT'
+}
+
+export type TreatyPaginator = {
+  __typename?: 'TreatyPaginator'
+  paginatorInfo: PaginatorInfo
+  data: Array<Treaty>
+}
+
+export type QueryCitiesOrderByOrderByClause = {
+  column: QueryCitiesOrderByColumn
+  order: SortOrder
+}
+
+export enum QueryCitiesOrderByColumn {
+  Id = 'ID',
+  Date = 'DATE',
+  Infrastructure = 'INFRASTRUCTURE',
+  Maxinfra = 'MAXINFRA',
+  Land = 'LAND'
+}
+
+export type CityPaginator = {
+  __typename?: 'CityPaginator'
+  paginatorInfo: PaginatorInfo
+  data: Array<City>
+}
+
+export type QueryBankrecsOrderByOrderByClause = {
+  column: QueryBankrecsOrderByColumn
+  order: SortOrder
+}
+
+export enum QueryBankrecsOrderByColumn {
+  Id = 'ID',
+  Date = 'DATE',
+  Money = 'MONEY',
+  Coal = 'COAL',
+  Oil = 'OIL',
+  Uranium = 'URANIUM',
+  Iron = 'IRON',
+  Bauxite = 'BAUXITE',
+  Lead = 'LEAD',
+  Gasoline = 'GASOLINE',
+  Munitions = 'MUNITIONS',
+  Steel = 'STEEL',
+  Aluminum = 'ALUMINUM',
+  Food = 'FOOD'
+}
+
+export type BankrecPaginator = {
+  __typename?: 'BankrecPaginator'
+  paginatorInfo: PaginatorInfo
+  data: Array<Bankrec>
+}
+
+export type QueryBaseballGamesOrderByOrderByClause = {
+  column: QueryBaseballGamesOrderByColumn
+  order: SortOrder
+}
+
+export enum QueryBaseballGamesOrderByColumn {
+  Id = 'ID',
+  Date = 'DATE',
+  Htscore = 'HTSCORE',
+  Atscore = 'ATSCORE'
+}
+
+export type BbGamePaginator = {
+  __typename?: 'BBGamePaginator'
+  paginatorInfo: PaginatorInfo
+  data: Array<BbGame>
+}
+
+export type BbGame = {
+  __typename?: 'BBGame'
+  id?: Maybe<Scalars['ID']>
+  date?: Maybe<Scalars['DateTimeAuto']>
+  home_id?: Maybe<Scalars['ID']>
+  away_id?: Maybe<Scalars['ID']>
+  home_team?: Maybe<BbTeam>
+  away_team?: Maybe<BbTeam>
+  home_nation_id?: Maybe<Scalars['ID']>
+  away_nation_id?: Maybe<Scalars['ID']>
+  home_nation?: Maybe<Nation>
+  away_nation?: Maybe<Nation>
+  stadium_name?: Maybe<Scalars['String']>
+  home_score?: Maybe<Scalars['Int']>
+  away_score?: Maybe<Scalars['Int']>
+  sim_text?: Maybe<Scalars['String']>
+  highlights?: Maybe<Scalars['String']>
+  home_revenue?: Maybe<Scalars['Float']>
+  spoils?: Maybe<Scalars['Float']>
+  open?: Maybe<Scalars['Int']>
+  wager?: Maybe<Scalars['Float']>
+}
+
+export type BbTeam = {
+  __typename?: 'BBTeam'
+  id?: Maybe<Scalars['ID']>
+  date?: Maybe<Scalars['DateTimeAuto']>
+  nation_id?: Maybe<Scalars['ID']>
+  nation?: Maybe<Nation>
+  name?: Maybe<Scalars['String']>
+  logo?: Maybe<Scalars['String']>
+  home_jersey?: Maybe<Scalars['String']>
+  away_jersey?: Maybe<Scalars['String']>
+  stadium?: Maybe<Scalars['String']>
+  quality?: Maybe<Scalars['Int']>
+  seating?: Maybe<Scalars['Int']>
+  rating?: Maybe<Scalars['Float']>
+  wins?: Maybe<Scalars['Int']>
+  glosses?: Maybe<Scalars['Int']>
+  runs?: Maybe<Scalars['Int']>
+  homers?: Maybe<Scalars['Int']>
+  strikeouts?: Maybe<Scalars['Int']>
+  games_played?: Maybe<Scalars['Int']>
+  games?: Maybe<Array<Maybe<BbGame>>>
+  players?: Maybe<Array<Maybe<BbPlayer>>>
+}
+
+export type BbPlayer = {
+  __typename?: 'BBPlayer'
+  id?: Maybe<Scalars['ID']>
+  date?: Maybe<Scalars['DateTimeAuto']>
+  nation_id?: Maybe<Scalars['ID']>
+  nation?: Maybe<Nation>
+  team_id?: Maybe<Scalars['ID']>
+  team?: Maybe<BbTeam>
+  name?: Maybe<Scalars['String']>
+  age?: Maybe<Scalars['Int']>
+  position?: Maybe<Scalars['String']>
+  pitching?: Maybe<Scalars['Float']>
+  batting?: Maybe<Scalars['Float']>
+  speed?: Maybe<Scalars['Float']>
+  awareness?: Maybe<Scalars['Float']>
+  overall?: Maybe<Scalars['Float']>
+  birthday?: Maybe<Scalars['Int']>
+}
+
+export type QueryBaseballTeamsOrderByOrderByClause = {
+  column: QueryBaseballTeamsOrderByColumn
+  order: SortOrder
+}
+
+export enum QueryBaseballTeamsOrderByColumn {
+  Id = 'ID',
+  Date = 'DATE',
+  Quality = 'QUALITY',
+  Seating = 'SEATING',
+  Rating = 'RATING',
+  Wins = 'WINS',
+  Glosses = 'GLOSSES',
+  Runs = 'RUNS',
+  Homers = 'HOMERS',
+  Strikeouts = 'STRIKEOUTS',
+  Games = 'GAMES'
+}
+
+export type BbTeamPaginator = {
+  __typename?: 'BBTeamPaginator'
+  paginatorInfo: PaginatorInfo
+  data: Array<BbTeam>
+}
+
+export type QueryBaseballPlayersOrderByOrderByClause = {
+  column: QueryBaseballPlayersOrderByColumn
+  order: SortOrder
+}
+
+export enum QueryBaseballPlayersOrderByColumn {
+  Id = 'ID',
+  Date = 'DATE',
+  Age = 'AGE',
+  Pitching = 'PITCHING',
+  Batting = 'BATTING',
+  Speed = 'SPEED',
+  Awareness = 'AWARENESS',
+  Overall = 'OVERALL'
+}
+
+export type BbPlayerPaginator = {
+  __typename?: 'BBPlayerPaginator'
+  paginatorInfo: PaginatorInfo
+  data: Array<BbPlayer>
+}
+
+export type Mutation = {
+  __typename?: 'Mutation'
+  bankDeposit: Bankrec
+  bankWithdraw: Bankrec
+}
+
+export type MutationBankDepositArgs = {
+  money?: Maybe<Scalars['Float']>
+  coal?: Maybe<Scalars['Float']>
+  oil?: Maybe<Scalars['Float']>
+  uranium?: Maybe<Scalars['Float']>
+  iron?: Maybe<Scalars['Float']>
+  bauxite?: Maybe<Scalars['Float']>
+  lead?: Maybe<Scalars['Float']>
+  gasoline?: Maybe<Scalars['Float']>
+  munitions?: Maybe<Scalars['Float']>
+  steel?: Maybe<Scalars['Float']>
+  aluminum?: Maybe<Scalars['Float']>
+  food?: Maybe<Scalars['Float']>
+  note?: Maybe<Scalars['String']>
+}
+
+export type MutationBankWithdrawArgs = {
+  receiver: Scalars['ID']
+  receiver_type: Scalars['Int']
+  money?: Maybe<Scalars['Float']>
+  coal?: Maybe<Scalars['Float']>
+  oil?: Maybe<Scalars['Float']>
+  uranium?: Maybe<Scalars['Float']>
+  iron?: Maybe<Scalars['Float']>
+  bauxite?: Maybe<Scalars['Float']>
+  lead?: Maybe<Scalars['Float']>
+  gasoline?: Maybe<Scalars['Float']>
+  munitions?: Maybe<Scalars['Float']>
+  steel?: Maybe<Scalars['Float']>
+  aluminum?: Maybe<Scalars['Float']>
+  food?: Maybe<Scalars['Float']>
+  note?: Maybe<Scalars['String']>
+}
+
+export type SimplePaginatorInfo = {
+  __typename?: 'SimplePaginatorInfo'
+  count: Scalars['Int']
+  currentPage: Scalars['Int']
+  firstItem?: Maybe<Scalars['Int']>
+  lastItem?: Maybe<Scalars['Int']>
+  perPage: Scalars['Int']
+  hasMorePages: Scalars['Boolean']
 }
 
 export type PageInfo = {
@@ -435,8 +989,25 @@ export type PageInfo = {
   hasPreviousPage: Scalars['Boolean']
   startCursor?: Maybe<Scalars['String']>
   endCursor?: Maybe<Scalars['String']>
-  total?: Maybe<Scalars['Int']>
-  count?: Maybe<Scalars['Int']>
-  currentPage?: Maybe<Scalars['Int']>
-  lastPage?: Maybe<Scalars['Int']>
+  total: Scalars['Int']
+  count: Scalars['Int']
+  currentPage: Scalars['Int']
+  lastPage: Scalars['Int']
+}
+
+export enum OrderByRelationAggregateFunction {
+  Count = 'COUNT'
+}
+
+export enum OrderByRelationWithColumnAggregateFunction {
+  Avg = 'AVG',
+  Min = 'MIN',
+  Max = 'MAX',
+  Sum = 'SUM',
+  Count = 'COUNT'
+}
+
+export type OrderByClause = {
+  column: Scalars['String']
+  order: SortOrder
 }
