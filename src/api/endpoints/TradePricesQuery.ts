@@ -7,7 +7,7 @@ import {
 import GraphQL from '../../services/GraphQL';
 
 export interface Parameters {
-  limit?: number;
+  first?: number;
 
   orderBy?: QueryTradesOrderByOrderByClause;
 }
