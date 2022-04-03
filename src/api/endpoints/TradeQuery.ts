@@ -8,7 +8,7 @@ import GraphQL from '../../services/GraphQL';
 
 export interface Parameters {
   id?: number;
-  type: TradeType;
+  type?: TradeType | string;
 
   first?: number;
   page?: number;
@@ -36,7 +36,7 @@ export default async function tradeQuery(
     query: string,
     paginator?: boolean,
 ): Promise<Trade[] | TradePaginator> {
-  const argsToParameters = GraphQL.generateParameters(params as QueryTradesArgs);
+  const argsToParameters = GraphQL.generateParameters(params as QueryTradesArgs, ['type']);
 
   const res = await GraphQL.makeCall(`
     {

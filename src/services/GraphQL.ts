@@ -37,15 +37,17 @@ class GraphQLService {
   /**
    * Takes a query and outputs query Parameters
    * @param {AnyQuery} queryParameters Any one of the five queries that take Parameters
+   * @param {string} enumeratorParameters Parameters who are represented as strings, but not sent as a string;
+   * they are treated like numbers, with no quotes.
    * @return {string}
    */
-  public generateParameters(queryParameters: AnyQuery) {
+  public generateParameters(queryParameters: AnyQuery, enumeratorParameters: string[] = []): string {
     const parameters: string[] = [];
 
     for (const [parameter, value] of Object.entries(queryParameters)) {
       if (value === undefined) continue;
 
-      if (typeof value == 'string') {
+      if (typeof value == 'string' && !enumeratorParameters.includes(parameter)) {
         parameters.push(`${parameter}: "${value}"`);
       } else if (typeof value == 'object' && Array.isArray(value)) {
         let interpretedValue = `${parameter}: [`;

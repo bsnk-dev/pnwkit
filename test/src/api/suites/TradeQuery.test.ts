@@ -8,5 +8,11 @@ export default function suite() {
 
       assert.strictEqual(typeof trades[0].total, 'number');
     });
+
+    it('should allow you to specify the trade type', async function() {
+      const trades = await pnwkit.tradeQuery({first: 1, type: 'GLOBAL'}, `total`);
+
+      assert.strictEqual(typeof trades[0].total, 'number');
+    });
   });
 }
