@@ -2,12 +2,17 @@ import {Kit} from '../..';
 import {
   QueryTradesArgs, QueryTradesOrderByOrderByClause,
   Trade,
-  TradePaginator,
+  TradePaginator, TradeType,
 } from '../../interfaces/PoliticsAndWarGraphQL';
 import GraphQL from '../../services/GraphQL';
 
 export interface Parameters {
+  id?: number;
+  type: TradeType;
+
   first?: number;
+  page?: number;
+
   nation_id?: string[];
   offer_resource?: string;
   buy_or_sell?: string;
