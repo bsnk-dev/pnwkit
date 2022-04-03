@@ -6,8 +6,10 @@ export interface Parameters {
   id?: number[];
   days_ago?: number;
   active?: boolean;
-  nation_id?: string[];
-  alliance_id?: string[];
+  nation_id?: number[];
+  min_id?: number;
+  max_id?: number;
+  alliance_id?: number[];
   first?: number;
   page?: number;
 
