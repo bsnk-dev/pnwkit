@@ -1,6 +1,6 @@
 import {Kit} from '../..';
 import {
-  QueryTradepricesArgs, QueryTradesOrderByOrderByClause,
+  QueryTradepricesArgs,
   Tradeprice,
   TradepricePaginator,
 } from '../../interfaces/PoliticsAndWarGraphQL';
@@ -8,8 +8,7 @@ import GraphQL from '../../services/GraphQL';
 
 export interface Parameters {
   first?: number;
-
-  orderBy?: QueryTradesOrderByOrderByClause;
+  page?: number;
 }
 
 /**
