@@ -12,3 +12,5 @@ tsconfig.json
 .eslintrc.json
 
 *.tgz
+
+.idea
