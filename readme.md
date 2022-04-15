@@ -39,7 +39,7 @@ Install the library using NPM.
   
 ### Future Plans
 
-Baseball queries are coming soon with v2.1.0!
+Baseball queries are coming soon with v2.2.0!
 
 ## Usage
 
