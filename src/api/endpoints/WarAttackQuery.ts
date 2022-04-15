@@ -43,9 +43,11 @@ export default async function warAttackQuery(
     }
   `, this.apiKey);
 
+  this.setRateLimit(res.rateLimit);
+
   if (paginator) {
-    return res.warattacks;
+    return res.data.warattacks;
   }
 
-  return res.warattacks.data as WarAttack[];
+  return res.data.warattacks.data as WarAttack[];
 }

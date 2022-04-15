@@ -58,9 +58,11 @@ export default async function warQuery(
     }
   `, this.apiKey);
 
+  this.setRateLimit(res.rateLimit);
+
   if (paginator) {
-    return res.wars;
+    return res.data.wars;
   }
 
-  return res.wars.data as War[];
+  return res.data.wars.data as War[];
 }

@@ -8,6 +8,7 @@ import ColorQuery from './suites/ColorQuery.test';
 import BountyQuery from './suites/BountyQuery.test';
 import BankRecordsQuery from './suites/BankRecordsQuery.test';
 import CityQuery from './suites/CityQuery.test';
+import RateLimit from './suites/RateLimit.test';
 
 describe('api', function() {
   NationQuery.bind(this)();
@@ -20,4 +21,5 @@ describe('api', function() {
   BountyQuery.bind(this)();
   BankRecordsQuery.bind(this)();
   CityQuery.bind(this)();
+  RateLimit.bind(this)();
 });

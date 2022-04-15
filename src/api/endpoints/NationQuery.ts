@@ -78,7 +78,9 @@ export default async function nationQuery(
     }
   `, this.apiKey);
 
-  if (paginator) return res.nations as NationPaginator;
+  this.setRateLimit(res.rateLimit);
 
-  return res.nations.data as Nation[];
+  if (paginator) return res.data.nations as NationPaginator;
+
+  return res.data.nations.data as Nation[];
 }

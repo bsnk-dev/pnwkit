@@ -1,5 +1,6 @@
 import PnwKitAPI from './api';
 import memoize from 'memoizee';
+import {RateLimitI} from './interfaces/GraphQLService';
 
 /**
  * The main application class
@@ -8,6 +9,12 @@ export class Kit extends PnwKitAPI {
   [key: string]: any;
 
   apiKey = '';
+  private rateLimitData = {
+    resetAfterSeconds: 0,
+    limit: 0,
+    remaining: 0,
+    reset: 0,
+  };
 
   /**
    * Set the pnwkit instance's key.
@@ -15,6 +22,22 @@ export class Kit extends PnwKitAPI {
    */
   setKey(key: string): void {
     this.apiKey = key;
+  }
+
+  get rateLimit(): RateLimitI {
+    return new Proxy(this.rateLimitData, {
+      set: () => {
+        return false;
+      },
+    });
+  }
+
+  /**
+   * Do not call this function, this is internal.
+   * @param value
+   */
+  setRateLimit(value: RateLimitI): void {
+    this.rateLimitData = value;
   }
 
   /**

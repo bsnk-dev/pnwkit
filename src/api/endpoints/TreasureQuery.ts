@@ -19,5 +19,7 @@ export default async function treasureQuery(
     }
   `, this.apiKey);
 
-  return res.treasures as Treasure[];
+  this.setRateLimit(res.rateLimit);
+
+  return res.data.treasures as Treasure[];
 }
