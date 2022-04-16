@@ -41,7 +41,7 @@ export class Kit extends PnwKitAPI {
   }
 
   /**
-   * Let's you cache results of a query call
+   * Lets you cache results of a query call
    *
    * It returns a cached version of the function that accepts the same arguments but caches it for a certain period of time
    * @param {(...args: any[]) => any} queryFunc The query function you want to cache
