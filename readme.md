@@ -39,7 +39,7 @@ Install the library using NPM.
   
 ### Future Plans
 
-Baseball queries are coming soon with v2.2.0!
+Baseball queries are coming soon with v2.3.0!
 
 ## Usage
 
@@ -117,6 +117,14 @@ const nations = await cachableNationQuery({id: [100541], first: 1}, `nation_name
 const nationsCached = await cachableNationQuery({id: [100541], first: 1}, `nation_name`);
 ```
 
+### Ratelimit Information
+
+PnwKit stores the following rate limit info for your convenience.
+
+  * ``pnwkit.rateLimit.limit``: The maximum number of requests you can make in a given time period.
+  * ``pnwkit.rateLimit.remaining``: The number of requests you have left in the current time period.
+  * ``pnwkit.rateLimit.reset``: The unix timestamp at which point the rate limit resets.
+  * ``pnwkit.rateLimit.resetAfterSeconds``: The number of seconds until the rate limit resets.
 
 You can also do the following queries in PnWKit:
 

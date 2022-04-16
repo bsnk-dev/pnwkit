@@ -19,5 +19,7 @@ export default async function colorQuery(
     }
   `, this.apiKey);
 
-  return res.colors as Color[];
+  this.setRateLimit(res.rateLimit);
+
+  return res.data.colors as Color[];
 }

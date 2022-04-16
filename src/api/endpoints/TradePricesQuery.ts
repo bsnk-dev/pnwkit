@@ -53,9 +53,11 @@ export default async function tradePricesQuery(
     }
   `, this.apiKey);
 
+  this.setRateLimit(res.rateLimit);
+
   if (paginator) {
-    return res.tradeprices as TradepricePaginator;
+    return res.data.tradeprices as TradepricePaginator;
   }
 
-  return res.tradeprices.data as Tradeprice[];
+  return res.data.tradeprices.data as Tradeprice[];
 }

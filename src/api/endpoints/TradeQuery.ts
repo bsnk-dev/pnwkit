@@ -63,9 +63,11 @@ export default async function tradeQuery(
     }
   `, this.apiKey);
 
+  this.setRateLimit(res.rateLimit);
+
   if (paginator) {
-    return res.trades as TradePaginator;
+    return res.data.trades as TradePaginator;
   }
 
-  return res.trades.data as Trade[];
+  return res.data.trades.data as Trade[];
 }

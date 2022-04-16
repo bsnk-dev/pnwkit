@@ -60,9 +60,11 @@ export default async function bountyQuery(
     }
   `, this.apiKey);
 
+  this.setRateLimit(res.rateLimit);
+
   if (paginator) {
-    return res.bounties;
+    return res.data.bounties;
   }
 
-  return res.bounties.data as Bounty[];
+  return res.data.bounties.data as Bounty[];
 }

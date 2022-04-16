@@ -55,7 +55,9 @@ export default async function allianceQuery(
     }
   `, this.apiKey);
 
-  if (paginator) return res.alliances as AlliancePaginator;
+  this.setRateLimit(res.rateLimit);
 
-  return res.alliances.data as Alliance[];
+  if (paginator) return res.data.alliances as AlliancePaginator;
+
+  return res.data.alliances.data as Alliance[];
 }

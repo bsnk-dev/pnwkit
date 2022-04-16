@@ -1,5 +1,6 @@
 import PnwKitAPI from './api';
 import memoize from 'memoizee';
+import {RateLimitI} from './interfaces/GraphQLService';
 
 /**
  * The main application class
@@ -8,6 +9,12 @@ export class Kit extends PnwKitAPI {
   [key: string]: any;
 
   apiKey = '';
+  private rateLimitData = {
+    resetAfterSeconds: 0,
+    limit: 0,
+    remaining: 0,
+    reset: 0,
+  };
 
   /**
    * Set the pnwkit instance's key.
@@ -17,8 +24,24 @@ export class Kit extends PnwKitAPI {
     this.apiKey = key;
   }
 
+  get rateLimit(): RateLimitI {
+    return new Proxy(this.rateLimitData, {
+      set: () => {
+        return false;
+      },
+    });
+  }
+
   /**
-   * Let's you cache results of a query call
+   * Do not call this function, this is internal.
+   * @param value
+   */
+  setRateLimit(value: RateLimitI): void {
+    this.rateLimitData = value;
+  }
+
+  /**
+   * Lets you cache results of a query call
    *
    * It returns a cached version of the function that accepts the same arguments but caches it for a certain period of time
    * @param {(...args: any[]) => any} queryFunc The query function you want to cache

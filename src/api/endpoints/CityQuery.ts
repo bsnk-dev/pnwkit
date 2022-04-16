@@ -59,9 +59,11 @@ export default async function cityQuery(
     }
   `, this.apiKey);
 
+  this.setRateLimit(res.rateLimit);
+
   if (paginator) {
-    return res.cities;
+    return res.data.cities;
   }
 
-  return res.cities.data as City[];
+  return res.data.cities.data as City[];
 }

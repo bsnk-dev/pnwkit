@@ -65,9 +65,11 @@ export default async function bankRecordsQuery(
     }
   `, this.apiKey);
 
+  this.setRateLimit(res.rateLimit);
+
   if (paginator) {
-    return res.bankrecs;
+    return res.data.bankrecs;
   }
 
-  return res.bankrecs.data as Bankrec[];
+  return res.data.bankrecs.data as Bankrec[];
 }

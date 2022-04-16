@@ -1,5 +1,6 @@
 import superagent from 'superagent';
 import {AnyQuery} from '../interfaces/PoliticsAndWarGraphQL';
+import {ResponseAndMetadataI} from '../interfaces/GraphQLService';
 
 /**
  * An internal method of handling calls to the P&W graphQL API
@@ -15,7 +16,7 @@ class GraphQLService {
    * @return {Promise<any>} Returns data to be type determined in a closer function
    * @throws {Error}
    */
-  public async makeCall(query: string, apiKey: string) {
+  public async makeCall(query: string, apiKey: string): Promise<ResponseAndMetadataI> {
     if (!apiKey) throw new Error('GraphQLService: Cannot make a call without an API key!');
 
     const res = await superagent.get(this.politicsAndWarAPIRoot)
@@ -31,7 +32,15 @@ class GraphQLService {
 
     if (!res.body.data) throw new Error(`GraphQLService: Received no data from API call, ${JSON.stringify(res.body)}`);
 
-    return res.body.data;
+    return {
+      data: res.body.data,
+      rateLimit: {
+        resetAfterSeconds: Number(res.get('X-RateLimit-Reset-After')),
+        limit: Number(res.get('X-RateLimit-Limit')),
+        remaining: Number(res.get('X-RateLimit-Remaining')),
+        reset: Number(res.get('X-RateLimit-Reset')),
+      },
+    };
   }
 
   /**
