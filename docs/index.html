@@ -95,7 +95,7 @@
 				<a href="#future-plans" id="future-plans" style="color: inherit; text-decoration: none;">
 					<h3>Future Plans</h3>
 				</a>
-				<p>Baseball queries are coming soon with v2.1.0!</p>
+				<p>Baseball queries are coming soon with v2.3.0!</p>
 				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
 					<h2>Usage</h2>
 				</a>
@@ -156,6 +156,16 @@
 <span style="color: #008000">// If you call it again within the age limit you&#039;ll get a cached version</span>
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">nationsCached</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #795E26">cachableNationQuery</span><span style="color: #000000">({</span><span style="color: #001080">id:</span><span style="color: #000000"> [</span><span style="color: #098658">100541</span><span style="color: #000000">], </span><span style="color: #001080">first:</span><span style="color: #000000"> </span><span style="color: #098658">1</span><span style="color: #000000">}, </span><span style="color: #A31515">`nation_name`</span><span style="color: #000000">);</span>
 </code></pre>
+				<a href="#ratelimit-information" id="ratelimit-information" style="color: inherit; text-decoration: none;">
+					<h3>Ratelimit Information</h3>
+				</a>
+				<p>PnwKit stores the following rate limit info for your convenience.</p>
+				<ul>
+					<li><code>pnwkit.rateLimit.limit</code>: The maximum number of requests you can make in a given time period.</li>
+					<li><code>pnwkit.rateLimit.remaining</code>: The number of requests you have left in the current time period.</li>
+					<li><code>pnwkit.rateLimit.reset</code>: The unix timestamp at which point the rate limit resets.</li>
+					<li><code>pnwkit.rateLimit.resetAfterSeconds</code>: The number of seconds until the rate limit resets.</li>
+				</ul>
 				<p>You can also do the following queries in PnWKit:</p>
 				<ul>
 					<li>nationQuery</li>
