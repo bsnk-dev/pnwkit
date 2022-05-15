@@ -41,6 +41,7 @@ export default function suite() {
       assert.strictEqual(exported.cached, pnwkit.cached);
       assert.strictEqual(exported.allianceQuery, pnwkit.allianceQuery);
       assert.strictEqual(exported.setKey, pnwkit.setKey);
+      assert.strictEqual(exported.setRateLimit, pnwkit.setRateLimit);
     });
   });
 }
