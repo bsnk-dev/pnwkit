@@ -62,5 +62,6 @@ for (const [key] of Object.entries(kit)) {
 
 exports.setKey = kit.setKey;
 exports.cached = kit.cached;
+exports.setRateLimit = kit.setRateLimit;
 
 export default kit;
